@@ -2,23 +2,23 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, Award, GraduationCap, Trophy } from "lucide-react";
+import { Briefcase, Award, GraduationCap, Trophy, Globe } from "lucide-react";
 
 const timeline = [
   {
-    icon: GraduationCap,
-    title: "Tecnólogo em Ciência de Dados e IA",
-    org: "PUC Goiás",
-    period: "Jan 2026 — Presente",
-    desc: "Formação superior em análise de dados, machine learning e inteligência artificial.",
-    current: true,
+    icon: Globe,
+    title: "Goiás pelo Mundo — Austrália",
+    org: "Programa de Intercâmbio",
+    period: "Jul 2026",
+    desc: "Intercâmbio cultural e educacional na Austrália. Aulas de inglês na ILSC e imersões culturais.",
+    highlight: true,
   },
   {
     icon: Trophy,
-    title: "3º Lugar — Olimpíada de IA Aplicada de Goiás",
-    org: "Competição Nacional",
-    period: "Ago — Nov 2025",
-    desc: "Desenvolvimento de solução de IA para o sistema de saúde pública de Goiás. Treinamento de modelos preditivos e resolução de desafios de machine learning.",
+    title: "3º Lugar — Olimpíada de IA Aplicada",
+    org: "Competição",
+    period: "2025",
+    desc: "Resolução de desafios de Machine Learning. Treinamento e implementação de modelos preditivos aplicados ao sistema de saúde de Goiás.",
     highlight: true,
   },
   {
@@ -26,43 +26,43 @@ const timeline = [
     title: "Desenvolvedor Web Freelancer",
     org: "Autônomo",
     period: "Jan — Set 2025",
-    desc: "Desenvolvimento de sites institucionais, landing pages e e-commerce. Integração de APIs, sistemas de pagamento e foco em performance e usabilidade.",
+    desc: "Desenvolvimento de sites institucionais, landing pages e e-commerces personalizados. Levantamento de requisitos, definição de escopo e integração de APIs e meios de pagamento.",
   },
   {
     icon: Award,
     title: "Mundo Senai 2025",
     org: "Sesi-Senai",
     period: "Abr 2025",
-    desc: "Apresentação de projetos de desenvolvimento de sistemas para público e profissionais da indústria.",
+    desc: "Apresentação de projetos técnicos ao público e profissionais da indústria. Demonstração de soluções práticas e networking profissional.",
   },
   {
     icon: Briefcase,
     title: "Projeto Inova 2024",
     org: "Sesi-Senai",
     period: "Set — Nov 2024",
-    desc: "Projeto de inovação em equipe multidisciplinar com design thinking, prototipagem e desenvolvimento ágil.",
+    desc: "Projeto de inovação voltado a soluções tecnológicas em equipe multidisciplinar, com design thinking, prototipagem e metodologias ágeis.",
+  },
+  {
+    icon: Briefcase,
+    title: "Junior Achievement — Miniempresa e Empresário Sombra",
+    org: "Programa de Empreendedorismo",
+    period: "Mar 2024 — Jul 2025",
+    desc: "Vivência prática em empreendedorismo, negócios e tomada de decisão. Desenvolvimento de comunicação, trabalho em equipe e gestão.",
   },
   {
     icon: GraduationCap,
     title: "Técnico em Desenvolvimento de Sistemas",
-    org: "Sesi-Senai",
-    period: "2023 — 2025",
+    org: "Sesi-Senai Aparecida de Goiânia",
+    period: "Jan 2023 — Dez 2025",
     desc: "Formação técnica em programação, banco de dados, desenvolvimento web e boas práticas.",
-  },
-  {
-    icon: Briefcase,
-    title: "Junior Achievement — Mini Empresa",
-    org: "Programa de Empreendedorismo",
-    period: "Mar 2024 — Jul 2025",
-    desc: "Participação em programa de empreendedorismo e educação empresarial.",
   },
 ];
 
 const certifications = [
   { name: "Python", org: "Kaggle", hours: 5 },
-  { name: "ChatGPT para Desenvolvedores", org: "OpenAI", hours: 18 },
-  { name: "Liga Jovem Challenge", org: "2025", hours: 30 },
-  { name: "Introdução à IA", org: "CEIA/UFG", hours: 40 },
+  { name: "ChatGPT for Devs", org: "OpenAI", hours: 18 },
+  { name: "Desafio Liga Jovem", org: "2025", hours: 30 },
+  { name: "Introdução à Inteligência Artificial", org: "CEIA/UFG", hours: 40 },
 ];
 
 export default function Experience() {
@@ -98,7 +98,7 @@ export default function Experience() {
                     className="relative pl-16"
                   >
                     <div className={`absolute left-4 w-4 h-4 rounded-full border-4 border-background ${
-                      item.highlight ? "bg-primary" : item.current ? "bg-accent" : "bg-muted"
+                      item.highlight ? "bg-primary" : "bg-muted"
                     }`} />
                     
                     <div className={`bg-card border rounded-xl p-5 ${
@@ -107,9 +107,6 @@ export default function Experience() {
                       <div className="flex items-center gap-2 mb-2">
                         <item.icon size={18} className={item.highlight ? "text-primary" : "text-muted"} />
                         <span className="text-xs text-muted font-mono">{item.period}</span>
-                        {item.current && (
-                          <span className="text-xs bg-accent/20 text-accent px-2 py-0.5 rounded">Atual</span>
-                        )}
                       </div>
                       <h3 className="font-semibold mb-1">{item.title}</h3>
                       <p className="text-sm text-primary mb-2">{item.org}</p>
@@ -151,9 +148,12 @@ export default function Experience() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-sm">Inglês</span>
-                  <span className="text-xs bg-border text-muted px-2 py-1 rounded">B1</span>
+                  <span className="text-xs bg-accent/20 text-accent px-2 py-1 rounded font-medium">C1</span>
                 </div>
               </div>
+              <p className="text-xs text-muted mt-4 pt-4 border-t border-border">
+                Vivência internacional: intercâmbio na Austrália pelo programa Goiás pelo Mundo (ILSC, 2026).
+              </p>
             </div>
           </motion.div>
         </div>

@@ -5,8 +5,9 @@ import { useRef } from "react";
 import {
   SiPython, SiJavascript, SiTypescript, SiReact, SiNextdotjs,
   SiHtml5, SiTailwindcss, SiGit, SiGithub, SiLinux,
-  SiPandas, SiNumpy, SiJupyter, SiSupabase, SiVercel, SiDocker
+  SiPandas, SiNumpy, SiJupyter, SiSupabase, SiVercel
 } from "react-icons/si";
+import { FileSpreadsheet } from "lucide-react";
 
 const skillCategories = [
   {
@@ -28,12 +29,12 @@ const skillCategories = [
     ],
   },
   {
-    title: "Data Science & IA",
+    title: "Dados & IA",
     skills: [
       { icon: SiPandas, name: "Pandas", level: 85 },
-      { icon: SiNumpy, name: "NumPy", level: 80 },
+      { icon: SiNumpy, name: "NumPy", level: 65 },
       { icon: SiJupyter, name: "Jupyter", level: 85 },
-      { icon: SiDocker, name: "Docker", level: 65 },
+      { icon: FileSpreadsheet, name: "Excel", level: 80 },
     ],
   },
   {

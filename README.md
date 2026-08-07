@@ -2,6 +2,8 @@
 
 Portfólio pessoal de Ian Alves Sousa — Desenvolvedor Full-Stack & IA.
 
+🌐 **Site ao vivo:** [portfolio-j6jwsulyb-ian-alves-sousas-projects.vercel.app](https://portfolio-j6jwsulyb-ian-alves-sousas-projects.vercel.app/)
+
 ## 🚀 Tecnologias
 
 - **Framework:** Next.js 14 (App Router)
@@ -9,15 +11,15 @@ Portfólio pessoal de Ian Alves Sousa — Desenvolvedor Full-Stack & IA.
 - **Estilização:** Tailwind CSS
 - **Animações:** Framer Motion
 - **Ícones:** React Icons + Lucide React
-- **Deploy:** Vercel
+- **Deploy:** Vercel (CI/CD conectado a este repositório)
 
 ## 📋 Seções
 
 - **Hero** — Apresentação e links principais
-- **Sobre** — Resumo profissional, educação e conquistas
-- **Projetos** — Projetos em destaque com links para GitHub e demos
+- **Sobre** — Resumo profissional, educação, conquistas e experiência internacional (Goiás pelo Mundo — Austrália)
+- **Projetos** — Projetos em destaque com links para GitHub e demos, incluindo o produto B2B WPP AI Bot (case study)
 - **Skills** — Habilidades técnicas com níveis e soft skills
-- **Experiência** — Timeline de experiências, formação e certificações
+- **Experiência** — Timeline de experiências, formação, certificações e idiomas (Inglês C1)
 - **Contato** — Formulário de contato e informações diretas
 
 ## 🛠️ Como executar localmente
@@ -45,7 +47,7 @@ npm start
 
 ## 🌐 Deploy
 
-O projeto está configurado para deploy automático na **Vercel**. Basta conectar o repositório na Vercel e o deploy acontece a cada push na branch `main`.
+Deploy automático na **Vercel** a cada push na branch `main`.
 
 ## 📄 Licença
 

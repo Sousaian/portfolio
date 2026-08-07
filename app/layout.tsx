@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ian Alves Sousa | Desenvolvedor Full-Stack & IA",
     description: "Portfólio de Ian Alves Sousa — Desenvolvedor Full-Stack com foco em IA, Automação e Ciência de Dados.",
-    url: "https://iansousa.dev",
+    url: "https://portfolio-j6jwsulyb-ian-alves-sousas-projects.vercel.app",
     siteName: "Ian Sousa Portfolio",
     locale: "pt_BR",
     type: "website",

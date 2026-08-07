@@ -2,12 +2,12 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code, Brain, Database, Zap, Award, GraduationCap } from "lucide-react";
+import { Code, Brain, Database, Zap, Award, GraduationCap, Globe } from "lucide-react";
 
 const highlights = [
   { icon: Code, title: "Desenvolvimento Web", desc: "Sites, e-commerce e aplicações full-stack" },
   { icon: Brain, title: "IA & Machine Learning", desc: "Modelos preditivos e automação inteligente" },
-  { icon: Database, title: "Ciência de Dados", desc: "Análise de dados com Python e Pandas" },
+  { icon: Database, title: "Análise de Dados", desc: "Pandas, Excel e visualização de dados" },
   { icon: Zap, title: "Automação", desc: "Bots WhatsApp, Telegram e integrações API" },
 ];
 
@@ -25,8 +25,9 @@ export default function About() {
         >
           <h2 className="section-title">Sobre Mim</h2>
           <p className="section-subtitle">
-            Estudante de Ciência de Dados e IA na PUC Goiás, técnico em Desenvolvimento de Sistemas
-            pelo Sesi-Senai. Desenvolvedor freelancer com experiência em projetos reais.
+            Estudante de tecnologia com foco em Desenvolvimento de Sistemas, Ciência de Dados
+            e Inteligência Artificial. Técnico em Desenvolvimento de Sistemas pelo Sesi-Senai
+            e desenvolvedor freelancer com experiência em projetos reais.
           </p>
         </motion.div>
 
@@ -40,18 +41,19 @@ export default function About() {
               Sou estudante de tecnologia com background em <strong className="text-foreground">Desenvolvimento de Software</strong>,{" "}
               <strong className="text-foreground">Ciência de Dados</strong> e{" "}
               <strong className="text-foreground">Inteligência Artificial</strong>. Tenho experiência
-              em projetos web, análise de dados e machine learning aplicado.
+              em projetos web, análise de dados e machine learning aplicado, sempre buscando
+              aplicar conhecimentos técnicos em problemas reais.
             </p>
             <p className="text-muted leading-relaxed mb-6">
               Atuei como <strong className="text-foreground">desenvolvedor web freelancer</strong> criando sites institucionais,
               landing pages e e-commerce, com integração de APIs e sistemas de pagamento.
-              Fui premiado com <strong className="text-primary">3º lugar</strong> na Olimpíada de IA Aplicada de Goiás 2025,
-              desenvolvendo soluções para o sistema de saúde do estado.
+              Fui premiado com <strong className="text-primary">3º lugar</strong> na Olimpíada de IA Aplicada 2025,
+              treinando modelos preditivos para o sistema de saúde de Goiás.
             </p>
             <p className="text-muted leading-relaxed">
-              Sou apaixonado por aprendizado contínuo, inovação e aplicar tecnologia para resolver
-              problemas reais. Atualmente focado em construir soluções de automação com IA
-              para pequenos negócios.
+              Participei do programa <strong className="text-foreground">Goiás pelo Mundo</strong>, com intercâmbio
+              na <strong className="text-foreground">Austrália</strong> — aulas de inglês na ILSC e imersões culturais.
+              Atualmente focado em construir soluções de automação com IA para pequenos negócios.
             </p>
           </motion.div>
 
@@ -81,7 +83,7 @@ export default function About() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 grid md:grid-cols-2 gap-6"
+          className="mt-16 grid md:grid-cols-3 gap-6"
         >
           <div className="bg-card border border-border rounded-xl p-6">
             <div className="flex items-center gap-3 mb-4">
@@ -90,12 +92,12 @@ export default function About() {
             </div>
             <div className="space-y-4">
               <div>
-                <p className="font-medium">Tecnólogo em Ciência de Dados e IA</p>
-                <p className="text-sm text-muted">PUC Goiás • Jan 2026 — Presente</p>
-              </div>
-              <div>
                 <p className="font-medium">Técnico em Desenvolvimento de Sistemas</p>
                 <p className="text-sm text-muted">Sesi-Senai • 2023 — 2025</p>
+              </div>
+              <div>
+                <p className="font-medium">Ensino Médio</p>
+                <p className="text-sm text-muted">Sesi-Senai • 2022 — 2025</p>
               </div>
             </div>
           </div>
@@ -107,12 +109,25 @@ export default function About() {
             </div>
             <div className="space-y-4">
               <div>
-                <p className="font-medium">3º Lugar — Olimpíada de IA Aplicada de Goiás</p>
-                <p className="text-sm text-muted">2025 • Solução IA para saúde pública</p>
+                <p className="font-medium">3º Lugar — Olimpíada de IA Aplicada</p>
+                <p className="text-sm text-muted">2025 • ML para saúde pública de Goiás</p>
               </div>
               <div>
                 <p className="font-medium">Mundo Senai 2025</p>
                 <p className="text-sm text-muted">Apresentação de projetos para público e indústria</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-card border border-accent/50 rounded-xl p-6">
+            <div className="flex items-center gap-3 mb-4">
+              <Globe className="text-accent" size={24} />
+              <h3 className="font-semibold text-lg">Experiência Internacional</h3>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <p className="font-medium">Goiás pelo Mundo — Austrália</p>
+                <p className="text-sm text-muted">Jul 2026 • Aulas de inglês na ILSC e imersões culturais</p>
               </div>
             </div>
           </div>
