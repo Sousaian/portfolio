@@ -2,14 +2,15 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Star } from "lucide-react";
+import { ExternalLink, Github, Star, Lock } from "lucide-react";
 
 const featuredProjects = [
   {
-    name: "wpp-ai-bot",
-    description: "Bot de WhatsApp com IA para automação de atendimento. Integração com Evolution API e LLMs.",
-    tech: ["Python", "Evolution API", "IA", "Automação"],
-    url: "https://github.com/Sousaian/wpp-ai-bot",
+    name: "WPP AI Bot — Produto B2B",
+    description: "Plataforma de atendimento automatizado no WhatsApp com IA. Agente com contexto do negócio, resposta 24/7 e handoff para humano. Case study público, código proprietário.",
+    tech: ["Python", "Evolution API", "LLM", "Docker", "SaaS"],
+    url: "https://github.com/Sousaian/wpp-ai-bot-showcase",
+    b2b: true,
     highlight: true,
   },
   {
@@ -54,11 +55,11 @@ const featuredProjects = [
 
 const otherProjects = [
   { name: "bot-telegram-promo-es", tech: "TypeScript", url: "https://github.com/Sousaian/bot-telegram-promo-es" },
-  { name: "evolution_api-integration", tech: "Python", url: "https://github.com/Sousaian/evolution_api-integration" },
   { name: "Plataforma-educacao-financeira", tech: "TypeScript", url: "https://github.com/Sousaian/Plataforma-educacao-financeira" },
   { name: "sistema_estacionamento", tech: "TypeScript", url: "https://github.com/Sousaian/sistema_estacionamento" },
   { name: "My-KDE_configs", tech: "Shell", url: "https://github.com/Sousaian/My-KDE_configs" },
   { name: "Chat-Gpt-Clone", tech: "JavaScript", url: "https://github.com/Sousaian/Chat-Gpt-Clone" },
+  { name: "portfolio", tech: "TypeScript", url: "https://github.com/Sousaian/portfolio" },
 ];
 
 export default function Projects() {
@@ -86,11 +87,18 @@ export default function Projects() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all hover:translate-y-[-4px] group"
+              className={`bg-card border rounded-xl p-6 transition-all hover:translate-y-[-4px] group ${
+                project.b2b ? "border-primary/60" : "border-border hover:border-primary/50"
+              }`}
             >
               <div className="flex items-start justify-between mb-4">
                 <Github size={24} className="text-muted group-hover:text-primary transition-colors" />
                 <div className="flex items-center gap-3">
+                  {project.b2b && (
+                    <span className="flex items-center gap-1 text-xs bg-primary/20 text-primary px-2 py-1 rounded font-medium">
+                      <Lock size={12} /> Produto B2B
+                    </span>
+                  )}
                   {project.stars && (
                     <span className="flex items-center gap-1 text-xs text-muted">
                       <Star size={14} /> {project.stars}
@@ -159,7 +167,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:text-primary-dark transition-colors font-medium"
           >
-            Ver todos os 35+ repositórios no GitHub
+            Ver todos os repositórios no GitHub
             <ExternalLink size={16} />
           </a>
         </motion.div>
