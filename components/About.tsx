@@ -3,17 +3,27 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code, Brain, Database, Zap, Award, GraduationCap, Globe } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
+import type { Segment } from "@/lib/translations";
 
-const highlights = [
-  { icon: Code, title: "Desenvolvimento Web", desc: "Sites, e-commerce e aplicações full-stack" },
-  { icon: Brain, title: "IA & Machine Learning", desc: "Modelos preditivos e automação inteligente" },
-  { icon: Database, title: "Análise de Dados", desc: "Pandas, Excel e visualização de dados" },
-  { icon: Zap, title: "Automação", desc: "Bots WhatsApp, Telegram e integrações API" },
-];
+const highlightIcons = [Code, Brain, Database, Zap];
+
+function renderSegments(segments: (Segment & { primary?: boolean })[]) {
+  return segments.map((seg, i) =>
+    seg.strong ? (
+      <strong key={i} className={(seg as { primary?: boolean }).primary ? "text-primary" : "text-foreground"}>
+        {seg.text}
+      </strong>
+    ) : (
+      <span key={i}>{seg.text}</span>
+    )
+  );
+}
 
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   return (
     <section id="about" className="py-24" ref={ref}>
@@ -23,12 +33,8 @@ export default function About() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="section-title">Sobre Mim</h2>
-          <p className="section-subtitle">
-            Estudante de tecnologia com foco em Desenvolvimento de Sistemas, Ciência de Dados
-            e Inteligência Artificial. Técnico em Desenvolvimento de Sistemas pelo Sesi-Senai
-            e desenvolvedor freelancer com experiência em projetos reais.
-          </p>
+          <h2 className="section-title">{t.about.title}</h2>
+          <p className="section-subtitle">{t.about.subtitle}</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -37,24 +43,9 @@ export default function About() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <p className="text-muted leading-relaxed mb-6">
-              Sou estudante de tecnologia com background em <strong className="text-foreground">Desenvolvimento de Software</strong>,{" "}
-              <strong className="text-foreground">Ciência de Dados</strong> e{" "}
-              <strong className="text-foreground">Inteligência Artificial</strong>. Tenho experiência
-              em projetos web, análise de dados e machine learning aplicado, sempre buscando
-              aplicar conhecimentos técnicos em problemas reais.
-            </p>
-            <p className="text-muted leading-relaxed mb-6">
-              Atuei como <strong className="text-foreground">desenvolvedor web freelancer</strong> criando sites institucionais,
-              landing pages e e-commerce, com integração de APIs e sistemas de pagamento.
-              Fui premiado com <strong className="text-primary">3º lugar</strong> na Olimpíada de IA Aplicada 2025,
-              treinando modelos preditivos para o sistema de saúde de Goiás.
-            </p>
-            <p className="text-muted leading-relaxed">
-              Participei do programa <strong className="text-foreground">Goiás pelo Mundo</strong>, com intercâmbio
-              na <strong className="text-foreground">Austrália</strong> — aulas de inglês na ILSC e imersões culturais.
-              Atualmente focado em construir soluções de automação com IA para pequenos negócios.
-            </p>
+            <p className="text-muted leading-relaxed mb-6">{renderSegments(t.about.p1)}</p>
+            <p className="text-muted leading-relaxed mb-6">{renderSegments(t.about.p2)}</p>
+            <p className="text-muted leading-relaxed">{renderSegments(t.about.p3)}</p>
           </motion.div>
 
           <motion.div
@@ -63,19 +54,22 @@ export default function About() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
-            {highlights.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.4 + idx * 0.1 }}
-                className="bg-card border border-border rounded-xl p-5 hover:border-primary/50 transition-colors"
-              >
-                <item.icon size={28} className="text-primary mb-3" />
-                <h3 className="font-semibold mb-1">{item.title}</h3>
-                <p className="text-sm text-muted">{item.desc}</p>
-              </motion.div>
-            ))}
+            {t.about.highlights.map((item, idx) => {
+              const Icon = highlightIcons[idx];
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.4 + idx * 0.1 }}
+                  className="bg-card border border-border rounded-xl p-5 hover:border-primary/50 transition-colors"
+                >
+                  <Icon size={28} className="text-primary mb-3" />
+                  <h3 className="font-semibold mb-1">{item.title}</h3>
+                  <p className="text-sm text-muted">{item.desc}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
 
@@ -88,47 +82,45 @@ export default function About() {
           <div className="bg-card border border-border rounded-xl p-6">
             <div className="flex items-center gap-3 mb-4">
               <GraduationCap className="text-primary" size={24} />
-              <h3 className="font-semibold text-lg">Educação</h3>
+              <h3 className="font-semibold text-lg">{t.about.cards.education.title}</h3>
             </div>
             <div className="space-y-4">
-              <div>
-                <p className="font-medium">Técnico em Desenvolvimento de Sistemas</p>
-                <p className="text-sm text-muted">Sesi-Senai • 2023 — 2025</p>
-              </div>
-              <div>
-                <p className="font-medium">Ensino Médio</p>
-                <p className="text-sm text-muted">Sesi-Senai • 2022 — 2025</p>
-              </div>
+              {t.about.cards.education.items.map((item) => (
+                <div key={item.name}>
+                  <p className="font-medium">{item.name}</p>
+                  <p className="text-sm text-muted">{item.detail}</p>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="bg-card border border-border rounded-xl p-6">
             <div className="flex items-center gap-3 mb-4">
               <Award className="text-primary" size={24} />
-              <h3 className="font-semibold text-lg">Conquistas</h3>
+              <h3 className="font-semibold text-lg">{t.about.cards.achievements.title}</h3>
             </div>
             <div className="space-y-4">
-              <div>
-                <p className="font-medium">3º Lugar — Olimpíada de IA Aplicada</p>
-                <p className="text-sm text-muted">2025 • ML para saúde pública de Goiás</p>
-              </div>
-              <div>
-                <p className="font-medium">Mundo Senai 2025</p>
-                <p className="text-sm text-muted">Apresentação de projetos para público e indústria</p>
-              </div>
+              {t.about.cards.achievements.items.map((item) => (
+                <div key={item.name}>
+                  <p className="font-medium">{item.name}</p>
+                  <p className="text-sm text-muted">{item.detail}</p>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="bg-card border border-accent/50 rounded-xl p-6">
             <div className="flex items-center gap-3 mb-4">
               <Globe className="text-accent" size={24} />
-              <h3 className="font-semibold text-lg">Experiência Internacional</h3>
+              <h3 className="font-semibold text-lg">{t.about.cards.international.title}</h3>
             </div>
             <div className="space-y-4">
-              <div>
-                <p className="font-medium">Goiás pelo Mundo — Austrália</p>
-                <p className="text-sm text-muted">Jul 2026 • Aulas de inglês na ILSC e imersões culturais</p>
-              </div>
+              {t.about.cards.international.items.map((item) => (
+                <div key={item.name}>
+                  <p className="font-medium">{item.name}</p>
+                  <p className="text-sm text-muted">{item.detail}</p>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>

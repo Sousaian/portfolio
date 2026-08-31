@@ -3,16 +3,18 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Mail, Phone, MapPin, Github, Send, MessageCircle } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Contact() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const { t } = useLanguage();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailto = `mailto:iansousa.dev@gmail.com?subject=Contato Portfolio - ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0A---%0AEmail: ${formData.email}`;
+    const mailto = `mailto:iansousa.dev@gmail.com?subject=${t.contact.form.mailSubject} - ${formData.name}&body=${encodeURIComponent(formData.message)}%0A%0A---%0AEmail: ${formData.email}`;
     window.open(mailto, "_blank");
     setSent(true);
     setTimeout(() => setSent(false), 3000);
@@ -26,10 +28,8 @@ export default function Contact() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="section-title">Entre em Contato</h2>
-          <p className="section-subtitle">
-            Interessado em trabalhar juntos ou tem alguma pergunta? Me mande uma mensagem!
-          </p>
+          <h2 className="section-title">{t.contact.title}</h2>
+          <p className="section-subtitle">{t.contact.subtitle}</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
@@ -44,7 +44,7 @@ export default function Contact() {
                 <Mail className="text-primary" size={24} />
               </div>
               <div>
-                <p className="text-sm text-muted">Email</p>
+                <p className="text-sm text-muted">{t.contact.labels.email}</p>
                 <a href="mailto:iansousa.dev@gmail.com" className="font-medium hover:text-primary transition-colors">
                   iansousa.dev@gmail.com
                 </a>
@@ -56,7 +56,7 @@ export default function Contact() {
                 <Phone className="text-primary" size={24} />
               </div>
               <div>
-                <p className="text-sm text-muted">Telefone</p>
+                <p className="text-sm text-muted">{t.contact.labels.phone}</p>
                 <a href="tel:+5562993432290" className="font-medium hover:text-primary transition-colors">
                   +55 (62) 99343-2290
                 </a>
@@ -68,7 +68,7 @@ export default function Contact() {
                 <MessageCircle className="text-primary" size={24} />
               </div>
               <div>
-                <p className="text-sm text-muted">WhatsApp</p>
+                <p className="text-sm text-muted">{t.contact.labels.whatsapp}</p>
                 <a href="https://wa.me/5562993432290" target="_blank" rel="noopener noreferrer" 
                    className="font-medium hover:text-primary transition-colors">
                   +55 (62) 99343-2290
@@ -81,8 +81,8 @@ export default function Contact() {
                 <MapPin className="text-primary" size={24} />
               </div>
               <div>
-                <p className="text-sm text-muted">Localização</p>
-                <p className="font-medium">Aparecida de Goiânia, GO — Brasil</p>
+                <p className="text-sm text-muted">{t.contact.labels.location}</p>
+                <p className="font-medium">{t.contact.locationValue}</p>
               </div>
             </div>
 
@@ -91,7 +91,7 @@ export default function Contact() {
                 <Github className="text-primary" size={24} />
               </div>
               <div>
-                <p className="text-sm text-muted">GitHub</p>
+                <p className="text-sm text-muted">{t.contact.labels.github}</p>
                 <a href="https://github.com/Sousaian" target="_blank" rel="noopener noreferrer"
                    className="font-medium hover:text-primary transition-colors">
                   github.com/Sousaian
@@ -108,7 +108,7 @@ export default function Contact() {
             className="space-y-4"
           >
             <div>
-              <label htmlFor="name" className="text-sm text-muted mb-2 block">Nome</label>
+              <label htmlFor="name" className="text-sm text-muted mb-2 block">{t.contact.form.name}</label>
               <input
                 type="text"
                 id="name"
@@ -116,12 +116,12 @@ export default function Contact() {
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full bg-card border border-border rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"
-                placeholder="Seu nome"
+                placeholder={t.contact.form.namePlaceholder}
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="text-sm text-muted mb-2 block">Email</label>
+              <label htmlFor="email" className="text-sm text-muted mb-2 block">{t.contact.form.email}</label>
               <input
                 type="email"
                 id="email"
@@ -129,12 +129,12 @@ export default function Contact() {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full bg-card border border-border rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors"
-                placeholder="seu@email.com"
+                placeholder={t.contact.form.emailPlaceholder}
               />
             </div>
 
             <div>
-              <label htmlFor="message" className="text-sm text-muted mb-2 block">Mensagem</label>
+              <label htmlFor="message" className="text-sm text-muted mb-2 block">{t.contact.form.message}</label>
               <textarea
                 id="message"
                 required
@@ -142,7 +142,7 @@ export default function Contact() {
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full bg-card border border-border rounded-lg px-4 py-3 focus:outline-none focus:border-primary transition-colors resize-none"
-                placeholder="Sua mensagem..."
+                placeholder={t.contact.form.messagePlaceholder}
               />
             </div>
 
@@ -151,9 +151,9 @@ export default function Contact() {
               className="w-full bg-primary text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors flex items-center justify-center gap-2"
             >
               {sent ? (
-                <>Mensagem enviada! <Send size={18} /></>
+                <>{t.contact.form.sent} <Send size={18} /></>
               ) : (
-                <>Enviar Mensagem <Send size={18} /></>
+                <>{t.contact.form.submit} <Send size={18} /></>
               )}
             </button>
           </motion.form>

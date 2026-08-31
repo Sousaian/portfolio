@@ -8,54 +8,39 @@ import {
   SiPandas, SiNumpy, SiJupyter, SiSupabase, SiVercel
 } from "react-icons/si";
 import { FileSpreadsheet } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
-const skillCategories = [
-  {
-    title: "Linguagens",
-    skills: [
-      { icon: SiPython, name: "Python" },
-      { icon: SiJavascript, name: "JavaScript" },
-      { icon: SiTypescript, name: "TypeScript" },
-      { icon: SiHtml5, name: "HTML/CSS" },
-    ],
-  },
-  {
-    title: "Frameworks & Ferramentas",
-    skills: [
-      { icon: SiReact, name: "React" },
-      { icon: SiNextdotjs, name: "Next.js" },
-      { icon: SiTailwindcss, name: "Tailwind" },
-      { icon: SiGit, name: "Git/GitHub" },
-    ],
-  },
-  {
-    title: "Dados & IA",
-    skills: [
-      { icon: SiPandas, name: "Pandas" },
-      { icon: SiNumpy, name: "NumPy" },
-      { icon: SiJupyter, name: "Jupyter" },
-      { icon: FileSpreadsheet, name: "Excel" },
-    ],
-  },
-  {
-    title: "Plataformas & DevOps",
-    skills: [
-      { icon: SiLinux, name: "Linux" },
-      { icon: SiSupabase, name: "Supabase" },
-      { icon: SiVercel, name: "Vercel" },
-      { icon: SiGithub, name: "GitHub Actions" },
-    ],
-  },
-];
-
-const softSkills = [
-  "Resolução de Problemas", "Metodologias Ágeis", "Trabalho em Equipe",
-  "Comunicação", "Aprendizado Rápido", "Adaptabilidade",
+const categorySkills = [
+  [
+    { icon: SiPython, name: "Python" },
+    { icon: SiJavascript, name: "JavaScript" },
+    { icon: SiTypescript, name: "TypeScript" },
+    { icon: SiHtml5, name: "HTML/CSS" },
+  ],
+  [
+    { icon: SiReact, name: "React" },
+    { icon: SiNextdotjs, name: "Next.js" },
+    { icon: SiTailwindcss, name: "Tailwind" },
+    { icon: SiGit, name: "Git/GitHub" },
+  ],
+  [
+    { icon: SiPandas, name: "Pandas" },
+    { icon: SiNumpy, name: "NumPy" },
+    { icon: SiJupyter, name: "Jupyter" },
+    { icon: FileSpreadsheet, name: "Excel" },
+  ],
+  [
+    { icon: SiLinux, name: "Linux" },
+    { icon: SiSupabase, name: "Supabase" },
+    { icon: SiVercel, name: "Vercel" },
+    { icon: SiGithub, name: "GitHub Actions" },
+  ],
 ];
 
 export default function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   return (
     <section id="skills" className="py-24" ref={ref}>
@@ -65,24 +50,22 @@ export default function Skills() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="section-title">Habilidades</h2>
-          <p className="section-subtitle">
-            Tecnologias e ferramentas que utilizo para criar soluções.
-          </p>
+          <h2 className="section-title">{t.skills.title}</h2>
+          <p className="section-subtitle">{t.skills.subtitle}</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {skillCategories.map((category, catIdx) => (
+          {t.skills.categories.map((title, catIdx) => (
             <motion.div
-              key={category.title}
+              key={title}
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: catIdx * 0.1 }}
               className="bg-card border border-border rounded-xl p-6"
             >
-              <h3 className="font-semibold text-lg mb-6 text-primary">{category.title}</h3>
+              <h3 className="font-semibold text-lg mb-6 text-primary">{title}</h3>
               <div className="grid grid-cols-2 gap-3">
-                {category.skills.map((skill, skillIdx) => (
+                {categorySkills[catIdx].map((skill, skillIdx) => (
                   <motion.div
                     key={skill.name}
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -105,9 +88,9 @@ export default function Skills() {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-12"
         >
-          <h3 className="text-xl font-semibold mb-6 text-center">Soft Skills</h3>
+          <h3 className="text-xl font-semibold mb-6 text-center">{t.skills.softTitle}</h3>
           <div className="flex flex-wrap justify-center gap-3">
-            {softSkills.map((skill, idx) => (
+            {t.skills.soft.map((skill, idx) => (
               <motion.span
                 key={skill}
                 initial={{ opacity: 0, scale: 0.8 }}

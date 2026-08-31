@@ -3,53 +3,36 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ExternalLink, Github, Star, Lock } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
-const featuredProjects = [
+const projectsMeta = [
   {
-    name: "WPP AI Bot — Produto B2B",
-    description: "Plataforma de atendimento automatizado no WhatsApp com IA. Agente com contexto do negócio, resposta 24/7 e handoff para humano. Case study público, código proprietário.",
     tech: ["Python", "Evolution API", "LLM", "Docker", "SaaS"],
     url: "https://github.com/Sousaian/wpp-ai-bot-showcase",
     b2b: true,
-    highlight: true,
   },
   {
-    name: "template-e-commerce",
-    description: "Template completo de e-commerce com design moderno e responsivo. Deploy na Vercel.",
     tech: ["JavaScript", "E-commerce", "Vercel"],
     url: "https://github.com/Sousaian/template-e-commerce",
     demo: "https://template-e-commerce.vercel.app",
     stars: 1,
-    highlight: true,
   },
   {
-    name: "analise_qualidade_de_dados",
-    description: "Análise de qualidade de dados com Python e Pandas. Notebooks com visualizações e insights.",
     tech: ["Python", "Pandas", "Jupyter", "Data Science"],
     url: "https://github.com/Sousaian/analise_qualidade_de_dados",
-    highlight: true,
   },
   {
-    name: "BrasilSemLixo",
-    description: "Projeto social sobre descarte consciente de lixo. Landing page informativa com GitHub Pages.",
     tech: ["HTML", "CSS", "GitHub Pages"],
     url: "https://github.com/Sousaian/BrasilSemLixo",
-    highlight: true,
   },
   {
-    name: "mundo-senai_2025",
-    description: "Projeto apresentado no Mundo Senai 2025 — demonstração de soluções técnicas para a indústria.",
     tech: ["JavaScript", "Sistemas", "Apresentação"],
     url: "https://github.com/Sousaian/mundo-senai_2025",
-    highlight: true,
   },
   {
-    name: "Desafio-DLJ-2025",
-    description: "Plataforma de gamificação educacional desenvolvida para o Desafio Liga Jovem 2025.",
     tech: ["TypeScript", "Educação", "Gamificação", "Vercel"],
     url: "https://github.com/Sousaian/Desafio-DLJ-2025",
     demo: "https://v0-educational-gamification-platfor-seven.vercel.app",
-    highlight: true,
   },
 ];
 
@@ -65,6 +48,7 @@ const otherProjects = [
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useLanguage();
 
   return (
     <section id="projects" className="py-24 bg-secondary/30" ref={ref}>
@@ -74,63 +58,64 @@ export default function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="section-title">Projetos em Destaque</h2>
-          <p className="section-subtitle">
-            Projetos que demonstram minhas habilidades em desenvolvimento web, automação e ciência de dados.
-          </p>
+          <h2 className="section-title">{t.projects.title}</h2>
+          <p className="section-subtitle">{t.projects.subtitle}</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {featuredProjects.map((project, idx) => (
-            <motion.div
-              key={project.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className={`bg-card border rounded-xl p-6 transition-all hover:translate-y-[-4px] group ${
-                project.b2b ? "border-primary/60" : "border-border hover:border-primary/50"
-              }`}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <Github size={24} className="text-muted group-hover:text-primary transition-colors" />
-                <div className="flex items-center gap-3">
-                  {project.b2b && (
-                    <span className="flex items-center gap-1 text-xs bg-primary/20 text-primary px-2 py-1 rounded font-medium">
-                      <Lock size={12} /> Produto B2B
-                    </span>
-                  )}
-                  {project.stars && (
-                    <span className="flex items-center gap-1 text-xs text-muted">
-                      <Star size={14} /> {project.stars}
-                    </span>
-                  )}
-                  <a href={project.url} target="_blank" rel="noopener noreferrer"
-                     className="text-muted hover:text-foreground transition-colors">
-                    <Github size={18} />
-                  </a>
-                  {project.demo && (
-                    <a href={project.demo} target="_blank" rel="noopener noreferrer"
+          {t.projects.featured.map((project, idx) => {
+            const meta = projectsMeta[idx];
+            return (
+              <motion.div
+                key={project.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className={`bg-card border rounded-xl p-6 transition-all hover:translate-y-[-4px] group ${
+                  meta.b2b ? "border-primary/60" : "border-border hover:border-primary/50"
+                }`}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <Github size={24} className="text-muted group-hover:text-primary transition-colors" />
+                  <div className="flex items-center gap-3">
+                    {meta.b2b && (
+                      <span className="flex items-center gap-1 text-xs bg-primary/20 text-primary px-2 py-1 rounded font-medium">
+                        <Lock size={12} /> {t.projects.b2bBadge}
+                      </span>
+                    )}
+                    {meta.stars && (
+                      <span className="flex items-center gap-1 text-xs text-muted">
+                        <Star size={14} /> {meta.stars}
+                      </span>
+                    )}
+                    <a href={meta.url} target="_blank" rel="noopener noreferrer"
                        className="text-muted hover:text-foreground transition-colors">
-                      <ExternalLink size={18} />
+                      <Github size={18} />
                     </a>
-                  )}
+                    {meta.demo && (
+                      <a href={meta.demo} target="_blank" rel="noopener noreferrer"
+                         className="text-muted hover:text-foreground transition-colors">
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
 
-              <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-                {project.name}
-              </h3>
-              <p className="text-sm text-muted mb-4 line-clamp-3">{project.description}</p>
+                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                  {project.name}
+                </h3>
+                <p className="text-sm text-muted mb-4 line-clamp-3">{project.description}</p>
 
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span key={t} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                <div className="flex flex-wrap gap-2">
+                  {meta.tech.map((tech) => (
+                    <span key={tech} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         <motion.div
@@ -138,7 +123,7 @@ export default function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <h3 className="text-xl font-semibold mb-6 text-center">Outros Projetos</h3>
+          <h3 className="text-xl font-semibold mb-6 text-center">{t.projects.othersTitle}</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {otherProjects.map((project) => (
               <a
@@ -167,7 +152,7 @@ export default function Projects() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-primary hover:text-primary-dark transition-colors font-medium"
           >
-            Ver todos os repositórios no GitHub
+            {t.projects.viewAll}
             <ExternalLink size={16} />
           </a>
         </motion.div>

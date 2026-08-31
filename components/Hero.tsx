@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Github, Mail, MapPin, ChevronDown } from "lucide-react";
 import { SiPython, SiJavascript, SiTypescript, SiReact, SiGit } from "react-icons/si";
+import { useLanguage } from "@/lib/LanguageContext";
 
 const techIcons = [
   { icon: SiPython, label: "Python" },
@@ -13,6 +14,8 @@ const techIcons = [
 ];
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-background to-background" />
@@ -29,7 +32,7 @@ export default function Hero() {
             transition={{ delay: 0.2 }}
             className="text-muted font-mono mb-4"
           >
-            Olá, eu sou
+            {t.hero.greeting}
           </motion.p>
 
           <motion.h1
@@ -47,7 +50,8 @@ export default function Hero() {
             transition={{ delay: 0.4 }}
             className="text-2xl md:text-4xl font-bold text-muted mb-6"
           >
-            Desenvolvedor <span className="text-primary">Full-Stack</span> & <span className="text-accent">IA</span>
+            {t.hero.titlePre} <span className="text-primary">{t.hero.titleH1}</span>{" "}
+            {t.hero.titleMid} <span className="text-accent">{t.hero.titleH2}</span>
           </motion.h2>
 
           <motion.p
@@ -56,8 +60,7 @@ export default function Hero() {
             transition={{ delay: 0.5 }}
             className="text-muted max-w-xl mx-auto mb-8 text-lg"
           >
-            Transformo ideias em soluções com código, automação e inteligência artificial.
-            Apaixonado por tecnologia e inovação.
+            {t.hero.subtitle}
           </motion.p>
 
           <motion.div
@@ -67,7 +70,7 @@ export default function Hero() {
             className="flex items-center justify-center gap-2 text-muted mb-8"
           >
             <MapPin size={16} />
-            <span>Aparecida de Goiânia, GO</span>
+            <span>{t.hero.location}</span>
           </motion.div>
 
           <motion.div
@@ -80,14 +83,14 @@ export default function Hero() {
               href="#projects"
               className="bg-primary text-white px-8 py-3 rounded-lg font-medium hover:bg-primary-dark transition-colors"
             >
-              Ver Projetos
+              {t.hero.viewProjects}
             </a>
             <a
               href="/curriculo.pdf"
               download
               className="border border-border px-8 py-3 rounded-lg font-medium hover:bg-secondary transition-colors"
             >
-              Baixar CV
+              {t.hero.downloadCV}
             </a>
           </motion.div>
 

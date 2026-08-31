@@ -2,26 +2,41 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
-
-const navItems = [
-  { label: "Início", href: "#hero" },
-  { label: "Sobre", href: "#about" },
-  { label: "Projetos", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experiência", href: "#experience" },
-  { label: "Contato", href: "#contact" },
-];
+import { Menu, X, Globe } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+
+  const navItems = [
+    { label: t.nav.home, href: "#hero" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.projects, href: "#projects" },
+    { label: t.nav.skills, href: "#skills" },
+    { label: t.nav.experience, href: "#experience" },
+    { label: t.nav.contact, href: "#contact" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const toggleLanguage = () => setLanguage(language === "pt" ? "en" : "pt");
+
+  const langButton = (
+    <button
+      onClick={toggleLanguage}
+      className="flex items-center gap-1.5 text-sm border border-border px-3 py-2 rounded-lg text-muted hover:text-foreground hover:border-primary/50 transition-colors"
+      aria-label="Switch language"
+    >
+      <Globe size={16} />
+      {language === "pt" ? "EN" : "PT"}
+    </button>
+  );
 
   return (
     <motion.nav
@@ -47,6 +62,7 @@ export default function Navbar() {
                 {item.label}
               </a>
             ))}
+            {langButton}
             <a
               href="https://github.com/Sousaian"
               target="_blank"
@@ -57,13 +73,16 @@ export default function Navbar() {
             </a>
           </div>
 
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Menu"
-          >
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-3">
+            {langButton}
+            <button
+              className="text-foreground"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Menu"
+            >
+              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {mobileOpen && (
