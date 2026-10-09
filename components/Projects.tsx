@@ -2,12 +2,12 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Star, Lock } from "lucide-react";
+import { ExternalLink, Github, Star, Lock, Check, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const projectsMeta: { tech: string[]; url?: string; demo?: string; stars?: number; b2b?: boolean }[] = [
   {
-    tech: ["Python", "Evolution API", "LLM", "Docker", "SaaS"],
+    tech: ["Python", "OpenAI API", "Evolution API", "RAG", "PostgreSQL", "Docker"],
     url: "https://github.com/Sousaian/wpp-ai-bot-showcase",
     b2b: true,
   },
@@ -35,7 +35,6 @@ const projectsMeta: { tech: string[]; url?: string; demo?: string; stars?: numbe
 ];
 
 const otherProjects = [
-  { name: "Chat-Bot", tech: "Java • JavaScript • MySQL", url: "https://github.com/Sousaian/Chat-Bot" },
   { name: "Mundo-Invertido", tech: "HTML • CSS • JavaScript", url: "https://github.com/Sousaian/Mundo-Invertido" },
   { name: "My-KDE_configs", tech: "Shell", url: "https://github.com/Sousaian/My-KDE_configs" },
   { name: "portfolio", tech: "TypeScript", url: "https://github.com/Sousaian/portfolio" },
@@ -102,7 +101,24 @@ export default function Projects() {
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
                   {project.name}
                 </h3>
-                <p className="text-sm text-muted mb-4 line-clamp-3">{project.description}</p>
+                {project.status && (
+                  <span className="inline-flex items-center gap-1.5 text-xs text-emerald-700 mb-3">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                    {project.status}
+                  </span>
+                )}
+                <p className={`text-sm text-muted mb-4 ${meta.b2b ? "" : "line-clamp-3"}`}>{project.description}</p>
+
+                {project.highlights && (
+                  <ul className="space-y-1.5 mb-4">
+                    {project.highlights.map((h) => (
+                      <li key={h} className="flex items-start gap-2 text-sm">
+                        <Check size={16} className="text-primary shrink-0 mt-0.5" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 <div className="flex flex-wrap gap-2">
                   {meta.tech.map((tech) => (
@@ -111,6 +127,14 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+
+                {project.caseStudy && meta.url && (
+                  <a href={meta.url} target="_blank" rel="noopener noreferrer"
+                     className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-primary hover:text-primary-dark transition-colors">
+                    {project.caseStudy}
+                    <ArrowRight size={16} />
+                  </a>
+                )}
               </motion.div>
             );
           })}
@@ -122,7 +146,7 @@ export default function Projects() {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <h3 className="text-xl font-semibold mb-6 text-center">{t.projects.othersTitle}</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {otherProjects.map((project) => (
               <a
                 key={project.name}

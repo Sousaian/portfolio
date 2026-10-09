@@ -89,7 +89,18 @@ const pt = {
     othersTitle: "Outros Projetos",
     viewAll: "Ver todos os repositórios no GitHub",
     featured: [
-      { name: "WPP AI Bot — Produto B2B", description: "Plataforma de atendimento automatizado no WhatsApp com IA. Agente com contexto do negócio, resposta 24/7 e handoff para humano. Case study público, código proprietário." },
+      {
+        name: "WPP AI Bot — Produto B2B",
+        description: "SaaS que conecta o WhatsApp de pequenos negócios a um agente de IA treinado com o contexto da empresa — produtos, preços, horários e políticas.",
+        highlights: [
+          "Respostas em linguagem natural, 24/7",
+          "Contexto do negócio via RAG",
+          "Handoff para atendente humano",
+          "Arquitetura multi-inquilino",
+        ],
+        status: "Em desenvolvimento ativo",
+        caseStudy: "Ver case study",
+      },
       { name: "template-e-commerce", description: "Template completo de e-commerce com design moderno e responsivo. Deploy na Vercel." },
       { name: "analise_qualidade_de_dados", description: "Análise de qualidade de dados com Python e Pandas. Notebooks com visualizações e insights." },
       { name: "BrasilSemLixo", description: "Projeto social sobre descarte consciente de lixo. Landing page informativa com GitHub Pages." },
@@ -235,7 +246,18 @@ const en: Translation = {
     othersTitle: "Other Projects",
     viewAll: "View all repositories on GitHub",
     featured: [
-      { name: "WPP AI Bot — B2B Product", description: "Automated customer service platform on WhatsApp with AI. Business-context agent, 24/7 responses and human handoff. Public case study, proprietary code." },
+      {
+        name: "WPP AI Bot — B2B Product",
+        description: "SaaS that connects small businesses' WhatsApp to an AI agent trained on company context — products, prices, hours and policies.",
+        highlights: [
+          "Natural-language replies, 24/7",
+          "Business context via RAG",
+          "Handoff to a human agent",
+          "Multi-tenant architecture",
+        ],
+        status: "Under active development",
+        caseStudy: "View case study",
+      },
       { name: "template-e-commerce", description: "Complete e-commerce template with modern, responsive design. Deployed on Vercel." },
       { name: "analise_qualidade_de_dados", description: "Data quality analysis with Python and Pandas. Notebooks with visualizations and insights." },
       { name: "BrasilSemLixo", description: "Social project about conscious waste disposal. Informative landing page on GitHub Pages." },
