@@ -10,7 +10,12 @@ const highlightIcons = [Code, Brain, Database, Zap];
 
 function renderSegments(segments: (Segment & { primary?: boolean })[]) {
   return segments.map((seg, i) =>
-    seg.strong ? (
+    seg.href ? (
+      <a key={i} href={seg.href} target="_blank" rel="noopener noreferrer"
+         className="font-bold text-primary hover:text-primary-dark underline underline-offset-2">
+        {seg.text}
+      </a>
+    ) : seg.strong ? (
       <strong key={i} className={(seg as { primary?: boolean }).primary ? "text-primary" : "text-foreground"}>
         {seg.text}
       </strong>

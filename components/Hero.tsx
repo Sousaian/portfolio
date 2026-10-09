@@ -85,13 +85,6 @@ export default function Hero() {
             >
               {t.hero.viewProjects}
             </a>
-            <a
-              href="/curriculo.pdf"
-              download
-              className="border border-border px-8 py-3 rounded-lg font-medium hover:bg-secondary transition-colors"
-            >
-              {t.hero.downloadCV}
-            </a>
           </motion.div>
 
           <motion.div

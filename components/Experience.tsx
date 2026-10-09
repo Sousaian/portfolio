@@ -2,10 +2,11 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Briefcase, Award, GraduationCap, Trophy, Globe } from "lucide-react";
+import { Briefcase, Award, GraduationCap, Trophy, Globe, Rocket, ExternalLink } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
-const timelineMeta = [
+const timelineMeta: { icon: typeof Globe; highlight: boolean; url?: string }[] = [
+  { icon: Rocket, highlight: true, url: "https://www.quokk-software.com" },
   { icon: Globe, highlight: true },
   { icon: Trophy, highlight: true },
   { icon: Briefcase, highlight: false },
@@ -67,7 +68,17 @@ export default function Experience() {
                           <Icon size={18} className={meta.highlight ? "text-primary" : "text-muted"} />
                           <span className="text-xs text-muted font-mono">{item.period}</span>
                         </div>
-                        <h3 className="font-semibold mb-1">{item.title}</h3>
+                        <h3 className="font-semibold mb-1">
+                          {meta.url ? (
+                            <a href={meta.url} target="_blank" rel="noopener noreferrer"
+                               className="inline-flex items-center gap-1.5 hover:text-primary transition-colors">
+                              {item.title}
+                              <ExternalLink size={14} />
+                            </a>
+                          ) : (
+                            item.title
+                          )}
+                        </h3>
                         <p className="text-sm text-primary mb-2">{item.org}</p>
                         <p className="text-sm text-muted">{item.desc}</p>
                       </div>

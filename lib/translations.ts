@@ -3,6 +3,7 @@ export type Language = "pt" | "en";
 export interface Segment {
   text: string;
   strong?: boolean;
+  href?: string;
 }
 
 const pt = {
@@ -23,7 +24,6 @@ const pt = {
     subtitle: "Transformo ideias em soluções com código, automação e inteligência artificial. Apaixonado por tecnologia e inovação.",
     location: "Aparecida de Goiânia, GO",
     viewProjects: "Ver Projetos",
-    downloadCV: "Baixar CV",
   },
   about: {
     title: "Sobre Mim",
@@ -49,7 +49,9 @@ const pt = {
       { text: "Goiás pelo Mundo", strong: true },
       { text: ", com intercâmbio na " },
       { text: "Austrália", strong: true },
-      { text: " — aulas de inglês na ILSC e imersões culturais. Atualmente focado em construir soluções de automação com IA para pequenos negócios." },
+      { text: " — aulas de inglês na ILSC e imersões culturais. Hoje sou " },
+      { text: "cofundador da Quokk Software", strong: true, href: "https://www.quokk-software.com" },
+      { text: ", estúdio de software e dados que entrega limpeza de dados, dashboards, automação e ferramentas web sob medida." },
     ] as Segment[],
     highlights: [
       { title: "Desenvolvimento Web", desc: "Sites, e-commerce e aplicações full-stack" },
@@ -106,6 +108,7 @@ const pt = {
     title: "Experiência & Formação",
     subtitle: "Minha jornada na tecnologia, educação e conquistas.",
     timeline: [
+      { title: "Cofundador — Quokk Software", org: "Estúdio de Software e Dados", period: "2026 — Atual", desc: "Cofundação de agência de software. Limpeza de dados, dashboards, automação sob medida e ferramentas web, com orçamento fechado e entrega no prazo." },
       { title: "Goiás pelo Mundo — Austrália", org: "Programa de Intercâmbio", period: "Jul 2026", desc: "Intercâmbio cultural e educacional na Austrália. Aulas de inglês na ILSC e imersões culturais." },
       { title: "3º Lugar — Olimpíada de IA Aplicada", org: "Competição", period: "2025", desc: "Resolução de desafios de Machine Learning. Treinamento e implementação de modelos preditivos aplicados ao sistema de saúde de Goiás." },
       { title: "Desenvolvedor Web Freelancer", org: "Autônomo", period: "Jan — Set 2025", desc: "Desenvolvimento de sites institucionais, landing pages e e-commerces personalizados. Levantamento de requisitos, definição de escopo e integração de APIs e meios de pagamento." },
@@ -167,7 +170,6 @@ const en: Translation = {
     subtitle: "I turn ideas into solutions with code, automation and artificial intelligence. Passionate about technology and innovation.",
     location: "Aparecida de Goiânia, GO",
     viewProjects: "View Projects",
-    downloadCV: "Download CV",
   },
   about: {
     title: "About Me",
@@ -193,7 +195,9 @@ const en: Translation = {
       { text: "Goiás pelo Mundo", strong: true },
       { text: " program, with an exchange in " },
       { text: "Australia", strong: true },
-      { text: " — English classes at ILSC and cultural immersions. Currently focused on building AI automation solutions for small businesses." },
+      { text: " — English classes at ILSC and cultural immersions. Today I'm " },
+      { text: "co-founder of Quokk Software", strong: true, href: "https://www.quokk-software.com" },
+      { text: ", a software and data studio delivering data cleaning, dashboards, automation and custom web tools." },
     ] as Segment[],
     highlights: [
       { title: "Web Development", desc: "Websites, e-commerce and full-stack applications" },
@@ -250,6 +254,7 @@ const en: Translation = {
     title: "Experience & Education",
     subtitle: "My journey in technology, education and achievements.",
     timeline: [
+      { title: "Co-founder — Quokk Software", org: "Software & Data Studio", period: "2026 — Present", desc: "Co-founded a software agency. Data cleaning, dashboards, custom automation and web tools, with fixed-price quotes and on-time delivery." },
       { title: "Goiás pelo Mundo — Australia", org: "Exchange Program", period: "Jul 2026", desc: "Cultural and educational exchange in Australia. English classes at ILSC and cultural immersions." },
       { title: "3rd Place — Applied AI Olympiad", org: "Competition", period: "2025", desc: "Machine learning challenges. Training and implementing predictive models applied to Goiás' healthcare system." },
       { title: "Freelance Web Developer", org: "Self-employed", period: "Jan — Sep 2025", desc: "Built institutional websites, landing pages and custom e-commerce. Requirements gathering, scope definition and API/payment integrations." },

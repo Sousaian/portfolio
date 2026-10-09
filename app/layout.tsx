@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://portfolio-iansousa.vercel.app"),
   title: "Ian Alves Sousa | Desenvolvedor Full-Stack & IA",
   description:
     "Portfólio de Ian Alves Sousa — Desenvolvedor Full-Stack com foco em Inteligência Artificial, Automação e Ciência de Dados. Aparecida de Goiânia, GO.",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Ian Alves Sousa | Desenvolvedor Full-Stack & IA",
     description: "Portfólio de Ian Alves Sousa — Desenvolvedor Full-Stack com foco em IA, Automação e Ciência de Dados.",
-    url: "https://portfolio-j6jwsulyb-ian-alves-sousas-projects.vercel.app",
+    url: "https://portfolio-iansousa.vercel.app",
     siteName: "Ian Sousa Portfolio",
     locale: "pt_BR",
     type: "website",

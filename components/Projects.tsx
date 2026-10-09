@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { ExternalLink, Github, Star, Lock } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
-const projectsMeta = [
+const projectsMeta: { tech: string[]; url?: string; demo?: string; stars?: number; b2b?: boolean }[] = [
   {
     tech: ["Python", "Evolution API", "LLM", "Docker", "SaaS"],
     url: "https://github.com/Sousaian/wpp-ai-bot-showcase",
@@ -14,7 +14,6 @@ const projectsMeta = [
   {
     tech: ["JavaScript", "E-commerce", "Vercel"],
     url: "https://github.com/Sousaian/template-e-commerce",
-    demo: "https://template-e-commerce.vercel.app",
     stars: 1,
   },
   {
@@ -31,17 +30,14 @@ const projectsMeta = [
   },
   {
     tech: ["TypeScript", "Educação", "Gamificação", "Vercel"],
-    url: "https://github.com/Sousaian/Desafio-DLJ-2025",
     demo: "https://v0-educational-gamification-platfor-seven.vercel.app",
   },
 ];
 
 const otherProjects = [
-  { name: "bot-telegram-promo-es", tech: "TypeScript", url: "https://github.com/Sousaian/bot-telegram-promo-es" },
-  { name: "Plataforma-educacao-financeira", tech: "TypeScript", url: "https://github.com/Sousaian/Plataforma-educacao-financeira" },
-  { name: "sistema_estacionamento", tech: "TypeScript", url: "https://github.com/Sousaian/sistema_estacionamento" },
+  { name: "Chat-Bot", tech: "Java • JavaScript • MySQL", url: "https://github.com/Sousaian/Chat-Bot" },
+  { name: "Mundo-Invertido", tech: "HTML • CSS • JavaScript", url: "https://github.com/Sousaian/Mundo-Invertido" },
   { name: "My-KDE_configs", tech: "Shell", url: "https://github.com/Sousaian/My-KDE_configs" },
-  { name: "Chat-Gpt-Clone", tech: "JavaScript", url: "https://github.com/Sousaian/Chat-Gpt-Clone" },
   { name: "portfolio", tech: "TypeScript", url: "https://github.com/Sousaian/portfolio" },
 ];
 
@@ -88,10 +84,12 @@ export default function Projects() {
                         <Star size={14} /> {meta.stars}
                       </span>
                     )}
-                    <a href={meta.url} target="_blank" rel="noopener noreferrer"
-                       className="text-muted hover:text-foreground transition-colors">
-                      <Github size={18} />
-                    </a>
+                    {meta.url && (
+                      <a href={meta.url} target="_blank" rel="noopener noreferrer"
+                         className="text-muted hover:text-foreground transition-colors">
+                        <Github size={18} />
+                      </a>
+                    )}
                     {meta.demo && (
                       <a href={meta.demo} target="_blank" rel="noopener noreferrer"
                          className="text-muted hover:text-foreground transition-colors">
@@ -124,7 +122,7 @@ export default function Projects() {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <h3 className="text-xl font-semibold mb-6 text-center">{t.projects.othersTitle}</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {otherProjects.map((project) => (
               <a
                 key={project.name}

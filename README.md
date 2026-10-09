@@ -2,7 +2,7 @@
 
 Portfólio pessoal de Ian Alves Sousa — Desenvolvedor Full-Stack & IA.
 
-🌐 **Site ao vivo:** [portfolio-j6jwsulyb-ian-alves-sousas-projects.vercel.app](https://portfolio-j6jwsulyb-ian-alves-sousas-projects.vercel.app/)
+🌐 **Site ao vivo:** [portfolio-iansousa.vercel.app](https://portfolio-iansousa.vercel.app/)
 
 ## 🚀 Tecnologias
 
