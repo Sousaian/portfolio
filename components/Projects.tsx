@@ -12,6 +12,10 @@ const projectsMeta: { tech: string[]; url?: string; demo?: string; stars?: numbe
     b2b: true,
   },
   {
+    tech: ["Java 21", "Spring Boot", "MySQL", "JavaScript"],
+    url: "https://github.com/Sousaian/Chat-Bot",
+  },
+  {
     tech: ["JavaScript", "E-commerce", "Vercel"],
     url: "https://github.com/Sousaian/template-e-commerce",
     stars: 1,
@@ -35,7 +39,6 @@ const projectsMeta: { tech: string[]; url?: string; demo?: string; stars?: numbe
 ];
 
 const otherProjects = [
-  { name: "Chat-Bot", tech: "Java • JavaScript • MySQL", url: "https://github.com/Sousaian/Chat-Bot" },
   { name: "Mundo-Invertido", tech: "HTML • CSS • JavaScript", url: "https://github.com/Sousaian/Mundo-Invertido" },
   { name: "My-KDE_configs", tech: "Shell", url: "https://github.com/Sousaian/My-KDE_configs" },
   { name: "portfolio", tech: "TypeScript", url: "https://github.com/Sousaian/portfolio" },
@@ -122,7 +125,7 @@ export default function Projects() {
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <h3 className="text-xl font-semibold mb-6 text-center">{t.projects.othersTitle}</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {otherProjects.map((project) => (
               <a
                 key={project.name}

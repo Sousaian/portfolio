@@ -90,6 +90,7 @@ const pt = {
     viewAll: "Ver todos os repositórios no GitHub",
     featured: [
       { name: "WPP AI Bot — Produto B2B", description: "Plataforma de atendimento automatizado no WhatsApp com IA. Agente com contexto do negócio, resposta 24/7 e handoff para humano. Case study público, código proprietário." },
+      { name: "Chat-Bot", description: "Protótipo de chatbot por palavras-chave em JavaScript, com API Java/Spring Boot para histórico de mensagens em banco relacional. Integração entre interface e API em desenvolvimento." },
       { name: "template-e-commerce", description: "Template completo de e-commerce com design moderno e responsivo. Deploy na Vercel." },
       { name: "analise_qualidade_de_dados", description: "Análise de qualidade de dados com Python e Pandas. Notebooks com visualizações e insights." },
       { name: "BrasilSemLixo", description: "Projeto social sobre descarte consciente de lixo. Landing page informativa com GitHub Pages." },
@@ -236,6 +237,7 @@ const en: Translation = {
     viewAll: "View all repositories on GitHub",
     featured: [
       { name: "WPP AI Bot — B2B Product", description: "Automated customer service platform on WhatsApp with AI. Business-context agent, 24/7 responses and human handoff. Public case study, proprietary code." },
+      { name: "Chat-Bot", description: "Keyword-based chatbot prototype in JavaScript, with a Java/Spring Boot API for message history in a relational database. UI-to-API integration is under development." },
       { name: "template-e-commerce", description: "Complete e-commerce template with modern, responsive design. Deployed on Vercel." },
       { name: "analise_qualidade_de_dados", description: "Data quality analysis with Python and Pandas. Notebooks with visualizations and insights." },
       { name: "BrasilSemLixo", description: "Social project about conscious waste disposal. Informative landing page on GitHub Pages." },
