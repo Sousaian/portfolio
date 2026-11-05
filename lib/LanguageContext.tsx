@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { MotionConfig } from "framer-motion";
 import { translations, Language, Translation } from "./translations";
 
 interface LanguageContextType {
@@ -31,9 +32,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const t = translations[language];
 
   return (
+    <MotionConfig reducedMotion="user">
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
+    </MotionConfig>
   );
 }
 

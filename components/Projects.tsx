@@ -2,37 +2,10 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Star, Lock, Check, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, Lock, Check, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
-const projectsMeta: { tech: string[]; url?: string; demo?: string; stars?: number; b2b?: boolean }[] = [
-  {
-    tech: ["Python", "OpenAI API", "Evolution API", "RAG", "PostgreSQL", "Docker"],
-    url: "https://github.com/Sousaian/wpp-ai-bot-showcase",
-    b2b: true,
-  },
-  {
-    tech: ["JavaScript", "E-commerce", "Vercel"],
-    url: "https://github.com/Sousaian/template-e-commerce",
-    stars: 1,
-  },
-  {
-    tech: ["Python", "Pandas", "Jupyter", "Data Science"],
-    url: "https://github.com/Sousaian/analise_qualidade_de_dados",
-  },
-  {
-    tech: ["HTML", "CSS", "GitHub Pages"],
-    url: "https://github.com/Sousaian/BrasilSemLixo",
-  },
-  {
-    tech: ["JavaScript", "Sistemas", "Apresentação"],
-    url: "https://github.com/Sousaian/mundo-senai_2025",
-  },
-  {
-    tech: ["TypeScript", "Educação", "Gamificação", "Vercel"],
-    demo: "https://v0-educational-gamification-platfor-seven.vercel.app",
-  },
-];
+import { projectsMeta } from "@/lib/portfolio";
 
 const otherProjects = [
   { name: "Mundo-Invertido", tech: "HTML • CSS • JavaScript", url: "https://github.com/Sousaian/Mundo-Invertido" },
@@ -59,7 +32,7 @@ export default function Projects() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {t.projects.featured.map((project, idx) => {
-            const meta = projectsMeta[idx];
+            const meta = projectsMeta[project.id];
             return (
               <motion.div
                 key={project.name}
@@ -71,28 +44,23 @@ export default function Projects() {
                 }`}
               >
                 <div className="flex items-start justify-between mb-4">
-                  <Github size={24} className="text-muted group-hover:text-primary transition-colors" />
+                  <Github size={24} className="text-muted group-hover:text-primary transition-colors"  aria-hidden="true" />
                   <div className="flex items-center gap-3">
                     {meta.b2b && (
                       <span className="flex items-center gap-1 text-xs bg-primary/20 text-primary px-2 py-1 rounded font-medium">
-                        <Lock size={12} /> {t.projects.b2bBadge}
-                      </span>
-                    )}
-                    {meta.stars && (
-                      <span className="flex items-center gap-1 text-xs text-muted">
-                        <Star size={14} /> {meta.stars}
+                        <Lock size={12}  aria-hidden="true" /> {t.projects.b2bBadge}
                       </span>
                     )}
                     {meta.url && (
-                      <a href={meta.url} target="_blank" rel="noopener noreferrer"
+                      <a aria-label={`${project.name} — GitHub`} href={meta.url} target="_blank" rel="noopener noreferrer"
                          className="text-muted hover:text-foreground transition-colors">
-                        <Github size={18} />
+                        <Github size={18}  aria-hidden="true" />
                       </a>
                     )}
                     {meta.demo && (
-                      <a href={meta.demo} target="_blank" rel="noopener noreferrer"
+                      <a aria-label={`${project.name} — Demo`} href={meta.demo} target="_blank" rel="noopener noreferrer"
                          className="text-muted hover:text-foreground transition-colors">
-                        <ExternalLink size={18} />
+                        <ExternalLink size={18}  aria-hidden="true" />
                       </a>
                     )}
                   </div>
@@ -113,11 +81,20 @@ export default function Projects() {
                   <ul className="space-y-1.5 mb-4">
                     {project.highlights.map((h) => (
                       <li key={h} className="flex items-start gap-2 text-sm">
-                        <Check size={16} className="text-primary shrink-0 mt-0.5" />
+                        <Check size={16} className="text-primary shrink-0 mt-0.5"  aria-hidden="true" />
                         <span>{h}</span>
                       </li>
                     ))}
                   </ul>
+                )}
+
+                {project.details && (
+                  <details className="mb-4 text-sm text-muted">
+                    <summary className="cursor-pointer text-primary font-medium">{t.projects.detailsLabel}</summary>
+                    <div className="mt-3 space-y-3">
+                      {project.details.map((detail) => <p key={detail}>{detail}</p>)}
+                    </div>
+                  </details>
                 )}
 
                 <div className="flex flex-wrap gap-2">
@@ -129,10 +106,10 @@ export default function Projects() {
                 </div>
 
                 {project.caseStudy && meta.url && (
-                  <a href={meta.url} target="_blank" rel="noopener noreferrer"
+                  <a aria-label={`${project.name} — GitHub`} href={meta.url} target="_blank" rel="noopener noreferrer"
                      className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-primary hover:text-primary-dark transition-colors">
                     {project.caseStudy}
-                    <ArrowRight size={16} />
+                    <ArrowRight size={16}  aria-hidden="true" />
                   </a>
                 )}
               </motion.div>
@@ -175,7 +152,7 @@ export default function Projects() {
             className="inline-flex items-center gap-2 text-primary hover:text-primary-dark transition-colors font-medium"
           >
             {t.projects.viewAll}
-            <ExternalLink size={16} />
+            <ExternalLink size={16}  aria-hidden="true" />
           </a>
         </motion.div>
       </div>

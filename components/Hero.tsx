@@ -5,6 +5,8 @@ import { Github, Mail, MapPin, ChevronDown } from "lucide-react";
 import { SiPython, SiJavascript, SiTypescript, SiReact, SiGit } from "react-icons/si";
 import { useLanguage } from "@/lib/LanguageContext";
 
+import { contact } from "@/lib/portfolio";
+
 const techIcons = [
   { icon: SiPython, label: "Python" },
   { icon: SiJavascript, label: "JavaScript" },
@@ -69,7 +71,7 @@ export default function Hero() {
             transition={{ delay: 0.6 }}
             className="flex items-center justify-center gap-2 text-muted mb-8"
           >
-            <MapPin size={16} />
+            <MapPin size={16}  aria-hidden="true" />
             <span>{t.hero.location}</span>
           </motion.div>
 
@@ -85,6 +87,9 @@ export default function Hero() {
             >
               {t.hero.viewProjects}
             </a>
+            <a href={contact.resume} download className="border border-primary text-primary px-8 py-3 rounded-lg font-medium hover:bg-primary/10 transition-colors">
+              {t.hero.resume}
+            </a>
           </motion.div>
 
           <motion.div
@@ -95,7 +100,7 @@ export default function Hero() {
           >
             {techIcons.map(({ icon: Icon, label }) => (
               <div key={label} className="flex flex-col items-center gap-1 text-muted hover:text-primary transition-colors">
-                <Icon size={28} />
+                <Icon size={28}  aria-hidden="true" />
                 <span className="text-xs">{label}</span>
               </div>
             ))}
@@ -107,25 +112,26 @@ export default function Hero() {
             transition={{ delay: 0.9 }}
             className="flex items-center justify-center gap-4"
           >
-            <a href="https://github.com/Sousaian" target="_blank" rel="noopener noreferrer"
+            <a aria-label="GitHub — Ian Alves Sousa" href="https://github.com/Sousaian" target="_blank" rel="noopener noreferrer"
                className="text-muted hover:text-foreground transition-colors">
-              <Github size={24} />
+              <Github size={24}  aria-hidden="true" />
             </a>
-            <a href="mailto:iansousa.dev@gmail.com"
+            <a aria-label="Email — Ian Alves Sousa" href="mailto:iansousa.dev@gmail.com"
                className="text-muted hover:text-foreground transition-colors">
-              <Mail size={24} />
+              <Mail size={24}  aria-hidden="true" />
             </a>
           </motion.div>
         </motion.div>
 
         <motion.a
+          aria-label={t.hero.aboutLabel}
           href="#about"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted animate-bounce"
         >
-          <ChevronDown size={28} />
+          <ChevronDown size={28}  aria-hidden="true" />
         </motion.a>
       </div>
     </section>

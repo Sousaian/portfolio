@@ -1,321 +1,609 @@
 export type Language = "pt" | "en";
-
-export interface Segment {
-  text: string;
-  strong?: boolean;
-  href?: string;
-}
-
+export interface Segment { text: string; strong?: boolean; href?: string; primary?: boolean }
+export interface Project { id: string; name: string; description: string; status?: string; caseStudy?: string; highlights?: string[]; details?: string[] }
 const pt = {
-  nav: {
-    home: "Início",
-    about: "Sobre",
-    projects: "Projetos",
-    skills: "Skills",
-    experience: "Experiência",
-    contact: "Contato",
+  "nav": {
+    "home": "Início",
+    "about": "Sobre",
+    "projects": "Projetos",
+    "skills": "Skills",
+    "experience": "Experiência",
+    "contact": "Contato"
   },
-  hero: {
-    greeting: "Olá, eu sou",
-    titlePre: "Desenvolvedor",
-    titleH1: "Full-Stack",
-    titleMid: "&",
-    titleH2: "IA",
-    subtitle: "Transformo ideias em soluções com código, automação e inteligência artificial. Apaixonado por tecnologia e inovação.",
-    location: "Aparecida de Goiânia, GO",
-    viewProjects: "Ver Projetos",
+  "hero": {
+    "greeting": "Olá, eu sou",
+    "titlePre": "Desenvolvedor",
+    "titleH1": "Full-Stack",
+    "titleMid": "&",
+    "titleH2": "IA",
+    "subtitle": "Desenvolvo aplicações web, integrações e automações com Python e TypeScript, aplicando IA a processos de negócio.",
+    "location": "Aparecida de Goiânia, GO",
+    "viewProjects": "Ver Projetos",
+    "resume": "Baixar currículo (PDF)",
+    "aboutLabel": "Ir para Sobre"
   },
-  about: {
-    title: "Sobre Mim",
-    subtitle: "Técnico em Desenvolvimento de Sistemas pelo Sesi-Senai, desenvolvedor freelancer com experiência em projetos reais e vivência internacional.",
-    p1: [
-      { text: "Sou desenvolvedor com background em " },
-      { text: "Desenvolvimento de Software", strong: true },
-      { text: ", " },
-      { text: "Análise de Dados", strong: true },
-      { text: " e " },
-      { text: "Inteligência Artificial", strong: true },
-      { text: ". Tenho experiência em projetos web, análise de dados e machine learning aplicado, sempre buscando aplicar conhecimentos técnicos em problemas reais." },
-    ] as Segment[],
-    p2: [
-      { text: "Atuei como " },
-      { text: "desenvolvedor web freelancer", strong: true },
-      { text: " criando sites institucionais, landing pages e e-commerce, com integração de APIs e sistemas de pagamento. Fui premiado com " },
-      { text: "3º lugar", strong: true, primary: true },
-      { text: " na Olimpíada de IA Aplicada 2025, treinando modelos preditivos para o sistema de saúde de Goiás." },
-    ] as (Segment & { primary?: boolean })[],
-    p3: [
-      { text: "Participei do programa " },
-      { text: "Goiás pelo Mundo", strong: true },
-      { text: ", com intercâmbio na " },
-      { text: "Austrália", strong: true },
-      { text: " — aulas de inglês na ILSC e imersões culturais. Hoje sou " },
-      { text: "cofundador da Quokk Software", strong: true, href: "https://www.quokk-software.com" },
-      { text: ", estúdio de software e dados que entrega limpeza de dados, dashboards, automação e ferramentas web sob medida." },
-    ] as Segment[],
-    highlights: [
-      { title: "Desenvolvimento Web", desc: "Sites, e-commerce e aplicações full-stack" },
-      { title: "IA & Machine Learning", desc: "Modelos preditivos e automação inteligente" },
-      { title: "Análise de Dados", desc: "Pandas, Excel e visualização de dados" },
-      { title: "Automação", desc: "Bots WhatsApp, Telegram e integrações API" },
-    ],
-    cards: {
-      education: {
-        title: "Educação",
-        items: [
-          { name: "Técnico em Desenvolvimento de Sistemas", detail: "Sesi-Senai • 2023 — 2025" },
-          { name: "Ensino Médio", detail: "Sesi-Senai • 2022 — 2025" },
-        ],
-      },
-      achievements: {
-        title: "Conquistas",
-        items: [
-          { name: "3º Lugar — Olimpíada de IA Aplicada", detail: "2025 • ML para saúde pública de Goiás" },
-          { name: "Mundo Senai 2025", detail: "Apresentação de projetos para público e indústria" },
-        ],
-      },
-      international: {
-        title: "Experiência Internacional",
-        items: [
-          { name: "Goiás pelo Mundo — Austrália", detail: "Jul 2026 • Aulas de inglês na ILSC e imersões culturais" },
-        ],
-      },
-    },
-  },
-  projects: {
-    title: "Projetos em Destaque",
-    subtitle: "Projetos que demonstram minhas habilidades em desenvolvimento web, automação e ciência de dados.",
-    b2bBadge: "Produto B2B",
-    othersTitle: "Outros Projetos",
-    viewAll: "Ver todos os repositórios no GitHub",
-    featured: [
+  "about": {
+    "title": "Sobre Mim",
+    "subtitle": "Técnico em Desenvolvimento de Sistemas pelo Sesi-Senai, desenvolvedor freelancer com experiência em projetos reais e vivência internacional.",
+    "p1": [
       {
-        name: "WPP AI Bot — Produto B2B",
-        description: "SaaS que conecta o WhatsApp de pequenos negócios a um agente de IA treinado com o contexto da empresa — produtos, preços, horários e políticas.",
-        highlights: [
-          "Respostas em linguagem natural, 24/7",
-          "Contexto do negócio via RAG",
-          "Handoff para atendente humano",
-          "Arquitetura multi-inquilino",
-        ],
-        status: "Em desenvolvimento ativo",
-        caseStudy: "Ver case study",
+        "text": "Desenvolvo aplicações web e integrações de APIs com Python e TypeScript. No WPP AI Bot, trabalho na automação de conversas no WhatsApp e na continuidade com atendimento humano."
+      }
+    ],
+    "p2": [
+      {
+        "text": "Atuei como "
       },
-      { name: "template-e-commerce", description: "Template completo de e-commerce com design moderno e responsivo. Deploy na Vercel." },
-      { name: "analise_qualidade_de_dados", description: "Análise de qualidade de dados com Python e Pandas. Notebooks com visualizações e insights." },
-      { name: "BrasilSemLixo", description: "Projeto social sobre descarte consciente de lixo. Landing page informativa com GitHub Pages." },
-      { name: "mundo-senai_2025", description: "Projeto apresentado no Mundo Senai 2025 — demonstração de soluções técnicas para a indústria." },
-      { name: "Desafio-DLJ-2025", description: "Plataforma de gamificação educacional desenvolvida para o Desafio Liga Jovem 2025." },
+      {
+        "text": "desenvolvedor web freelancer",
+        "strong": true
+      },
+      {
+        "text": " criando sites institucionais, landing pages e e-commerce, com integração de APIs e sistemas de pagamento. Fui premiado com "
+      },
+      {
+        "text": "3º lugar",
+        "strong": true,
+        "primary": true
+      },
+      {
+        "text": " na Olimpíada de IA Aplicada 2025, treinando modelos preditivos para o sistema de saúde de Goiás."
+      }
     ],
-  },
-  skills: {
-    title: "Habilidades",
-    subtitle: "Tecnologias e ferramentas que utilizo para criar soluções.",
-    categories: ["Linguagens", "Frameworks & Ferramentas", "Dados & IA", "Plataformas & DevOps"],
-    softTitle: "Soft Skills",
-    soft: ["Resolução de Problemas", "Metodologias Ágeis", "Trabalho em Equipe", "Comunicação", "Aprendizado Rápido", "Adaptabilidade"],
-  },
-  experience: {
-    title: "Experiência & Formação",
-    subtitle: "Minha jornada na tecnologia, educação e conquistas.",
-    timeline: [
-      { title: "Cofundador — Quokk Software", org: "Estúdio de Software e Dados", period: "2026 — Atual", desc: "Cofundação de agência de software. Limpeza de dados, dashboards, automação sob medida e ferramentas web, com orçamento fechado e entrega no prazo." },
-      { title: "Goiás pelo Mundo — Austrália", org: "Programa de Intercâmbio", period: "Jul 2026", desc: "Intercâmbio cultural e educacional na Austrália. Aulas de inglês na ILSC e imersões culturais." },
-      { title: "3º Lugar — Olimpíada de IA Aplicada", org: "Competição", period: "2025", desc: "Resolução de desafios de Machine Learning. Treinamento e implementação de modelos preditivos aplicados ao sistema de saúde de Goiás." },
-      { title: "Desenvolvedor Web Freelancer", org: "Autônomo", period: "Jan — Set 2025", desc: "Desenvolvimento de sites institucionais, landing pages e e-commerces personalizados. Levantamento de requisitos, definição de escopo e integração de APIs e meios de pagamento." },
-      { title: "Mundo Senai 2025", org: "Sesi-Senai", period: "Abr 2025", desc: "Apresentação de projetos técnicos ao público e profissionais da indústria. Demonstração de soluções práticas e networking profissional." },
-      { title: "Projeto Inova 2024", org: "Sesi-Senai", period: "Set — Nov 2024", desc: "Projeto de inovação voltado a soluções tecnológicas em equipe multidisciplinar, com design thinking, prototipagem e metodologias ágeis." },
-      { title: "Junior Achievement — Miniempresa e Empresário Sombra", org: "Programa de Empreendedorismo", period: "Mar 2024 — Jul 2025", desc: "Vivência prática em empreendedorismo, negócios e tomada de decisão. Desenvolvimento de comunicação, trabalho em equipe e gestão." },
-      { title: "Técnico em Desenvolvimento de Sistemas", org: "Sesi-Senai Aparecida de Goiânia", period: "Jan 2023 — Dez 2025", desc: "Formação técnica em programação, banco de dados, desenvolvimento web e boas práticas." },
+    "p3": [
+      {
+        "text": "Participei do programa "
+      },
+      {
+        "text": "Goiás pelo Mundo",
+        "strong": true
+      },
+      {
+        "text": ", com intercâmbio na "
+      },
+      {
+        "text": "Austrália",
+        "strong": true
+      },
+      {
+        "text": " — aulas de inglês na ILSC e imersões culturais. Hoje sou "
+      },
+      {
+        "text": "cofundador da Quokk Software",
+        "strong": true,
+        "href": "https://www.quokk-software.com"
+      },
+      {
+        "text": ", estúdio de software e dados que entrega limpeza de dados, dashboards, automação e ferramentas web sob medida."
+      }
     ],
-    certificationsTitle: "Certificações",
-    languagesTitle: "Idiomas",
-    languages: [
-      { name: "Português", level: "Nativo" },
-      { name: "Inglês", level: "C1" },
+    "highlights": [
+      {
+        "title": "Desenvolvimento Web",
+        "desc": "Sites, e-commerce e aplicações full-stack"
+      },
+      {
+        "title": "IA & Machine Learning",
+        "desc": "Modelos preditivos e automação inteligente"
+      },
+      {
+        "title": "Análise de Dados",
+        "desc": "Pandas, Excel e visualização de dados"
+      },
+      {
+        "title": "Automação",
+        "desc": "Automação no WhatsApp e integrações de APIs REST"
+      }
     ],
-    langNote: "Vivência internacional: intercâmbio na Austrália pelo programa Goiás pelo Mundo (ILSC, 2026).",
+    "cards": {
+      "education": {
+        "title": "Educação",
+        "items": [
+          {
+            "name": "Técnico em Desenvolvimento de Sistemas",
+            "detail": "Sesi-Senai • 2023 — 2025"
+          },
+          {
+            "name": "Ensino Médio",
+            "detail": "Sesi-Senai • 2022 — 2025"
+          }
+        ]
+      },
+      "achievements": {
+        "title": "Conquistas",
+        "items": [
+          {
+            "name": "3º Lugar — Olimpíada de IA Aplicada",
+            "detail": "2025 • ML para saúde pública de Goiás"
+          },
+          {
+            "name": "Mundo Senai 2025",
+            "detail": "Apresentação de projetos para público e indústria"
+          }
+        ]
+      },
+      "international": {
+        "title": "Experiência Internacional",
+        "items": [
+          {
+            "name": "Goiás pelo Mundo — Austrália",
+            "detail": "Jul 2026 • Aulas de inglês na ILSC e imersões culturais"
+          }
+        ]
+      }
+    }
   },
-  contact: {
-    title: "Entre em Contato",
-    subtitle: "Interessado em trabalhar juntos ou tem alguma pergunta? Me mande uma mensagem!",
-    labels: { email: "Email", phone: "Telefone", whatsapp: "WhatsApp", location: "Localização", github: "GitHub" },
-    locationValue: "Aparecida de Goiânia, GO — Brasil",
-    form: {
-      name: "Nome",
-      namePlaceholder: "Seu nome",
-      email: "Email",
-      emailPlaceholder: "seu@email.com",
-      message: "Mensagem",
-      messagePlaceholder: "Sua mensagem...",
-      submit: "Enviar Mensagem",
-      sent: "Mensagem enviada!",
-      mailSubject: "Contato Portfolio",
+  "projects": {
+    "title": "Projetos em Destaque",
+    "subtitle": "Projetos que demonstram minhas habilidades em desenvolvimento web, automação e ciência de dados.",
+    "b2bBadge": "Produto B2B",
+    "othersTitle": "Outros Projetos",
+    "viewAll": "Ver todos os repositórios no GitHub",
+    "featured": [
+      {
+        "id": "wpp",
+        "name": "WPP AI Bot",
+        "description": "Produto B2B proprietário em desenvolvimento para atendimento via WhatsApp, com implantação e configuração por cliente.",
+        "status": "Em desenvolvimento ativo",
+        "caseStudy": "Ver case público",
+        "highlights": [
+          "Instruções por prompt e histórico limitado da conversa",
+          "Modelos configuráveis via OpenRouter",
+          "Transferência humana para o Chatwoot"
+        ],
+        "details": [
+          "Problema: dúvidas recorrentes e continuidade entre atendimento automatizado e humano. Minha implementação conecta Evolution API, geração de respostas e handoff para o Chatwoot.",
+          "Decisões: FastAPI e SQLAlchemy com MySQL para dados da aplicação; OpenRouter por SDK compatível com OpenAI. PostgreSQL e Redis apoiam as integrações.",
+          "Projeto em desenvolvimento, com arquitetura documentada no repositório público. Implantação por cliente requer configuração e validação operacional."
+        ]
+      },
+      {
+        "id": "commerce",
+        "name": "template-e-commerce",
+        "description": "Template web de e-commerce. Código disponível para consulta."
+      },
+      {
+        "id": "data",
+        "name": "analise_qualidade_de_dados",
+        "description": "Análise exploratória de gastos do Ministério da Saúde de dezembro de 2023, em notebook Python.",
+        "details": [
+          "Problema: compreender qualidade e distribuição dos registros de gastos. O notebook documenta inspeção, limpeza, análise descritiva e visualizações.",
+          "Implementação: Pandas e NumPy na preparação dos dados; Matplotlib e Seaborn nos gráficos; SciPy na análise estatística.",
+          "Notebook e metodologia disponíveis no repositório; análise restrita a dezembro de 2023. Um mês não estabelece sazonalidade; conclusões dependem dos dados de origem e das escolhas de limpeza."
+        ]
+      },
+      {
+        "id": "brasil",
+        "name": "BrasilSemLixo",
+        "description": "Protótipo educativo em equipe para consulta de horários de coleta de resíduos, com demonstração pública.",
+        "details": [
+          "Problema: facilitar consulta de informações de coleta. Participei do projeto em equipe; o módulo implementado é o Monitor de Coleta.",
+          "Implementação: HTML, CSS e JavaScript puro; seleção de bairro e rua, filtros por tipo de coleta e cards responsivos.",
+          "Evidência: demo estática pública com dados fictícios locais, sem API governamental. Guias de reciclagem e ecopontos são previstos, não módulos entregues."
+        ]
+      },
+      {
+        "id": "senai",
+        "name": "mundo-senai_2025",
+        "description": "Projeto associado ao Mundo Senai 2025. Repositório público disponível para consulta."
+      },
+      {
+        "id": "dlj",
+        "name": "Desafio-DLJ-2025",
+        "description": "Protótipo de plataforma de gamificação educacional para o Desafio Liga Jovem 2025."
+      }
+    ],
+    "detailsLabel": "Implementação e evidências"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "subtitle": "Tecnologias e ferramentas que utilizo para criar soluções.",
+    "categories": [
+      "Linguagens",
+      "Web & APIs",
+      "Dados & IA",
+      "Infraestrutura & Ferramentas"
+    ],
+    "softTitle": "Soft Skills",
+    "soft": [
+      "Resolução de Problemas",
+      "Metodologias Ágeis",
+      "Trabalho em Equipe",
+      "Comunicação",
+      "Aprendizado Rápido",
+      "Adaptabilidade"
+    ]
+  },
+  "experience": {
+    "title": "Experiência & Formação",
+    "subtitle": "Minha jornada na tecnologia, educação e conquistas.",
+    "timeline": [
+      {
+        "title": "Cofundador — Quokk Software",
+        "org": "Estúdio de Software e Dados",
+        "period": "2026 — Atual",
+        "desc": "Cofundação de estúdio de software e dados. Atuação em limpeza de dados, dashboards, automação sob medida e ferramentas web."
+      },
+      {
+        "title": "Goiás pelo Mundo — Austrália",
+        "org": "Programa de Intercâmbio",
+        "period": "Jul 2026",
+        "desc": "Intercâmbio cultural e educacional na Austrália. Aulas de inglês na ILSC e imersões culturais."
+      },
+      {
+        "title": "3º Lugar — Olimpíada de IA Aplicada",
+        "org": "Competição",
+        "period": "2025",
+        "desc": "Resolução de desafios de Machine Learning. Treinamento e implementação de modelos preditivos aplicados ao sistema de saúde de Goiás."
+      },
+      {
+        "title": "Desenvolvedor Web Freelancer",
+        "org": "Autônomo",
+        "period": "Jan — Set 2025",
+        "desc": "Desenvolvimento de sites institucionais, landing pages e e-commerces personalizados. Levantamento de requisitos, definição de escopo e integração de APIs e meios de pagamento."
+      },
+      {
+        "title": "Mundo Senai 2025",
+        "org": "Sesi-Senai",
+        "period": "Abr 2025",
+        "desc": "Apresentação de projetos técnicos ao público e profissionais da indústria. Demonstração de soluções práticas e networking profissional."
+      },
+      {
+        "title": "Projeto Inova 2024",
+        "org": "Sesi-Senai",
+        "period": "Set — Nov 2024",
+        "desc": "Projeto de inovação voltado a soluções tecnológicas em equipe multidisciplinar, com design thinking, prototipagem e metodologias ágeis."
+      },
+      {
+        "title": "Junior Achievement — Miniempresa e Empresário Sombra",
+        "org": "Programa de Empreendedorismo",
+        "period": "Mar 2024 — Jul 2025",
+        "desc": "Vivência prática em empreendedorismo, negócios e tomada de decisão. Desenvolvimento de comunicação, trabalho em equipe e gestão."
+      },
+      {
+        "title": "Técnico em Desenvolvimento de Sistemas",
+        "org": "Sesi-Senai Aparecida de Goiânia",
+        "period": "Jan 2023 — Dez 2025",
+        "desc": "Formação técnica em programação, banco de dados, desenvolvimento web e boas práticas."
+      }
+    ],
+    "certificationsTitle": "Certificações",
+    "languagesTitle": "Idiomas",
+    "languages": [
+      {
+        "name": "Português",
+        "level": "Nativo"
+      },
+      {
+        "name": "Inglês",
+        "level": "C1"
+      }
+    ],
+    "langNote": "Vivência internacional: intercâmbio na Austrália pelo programa Goiás pelo Mundo (ILSC, 2026)."
+  },
+  "contact": {
+    "title": "Entre em Contato",
+    "subtitle": "Interessado em trabalhar juntos ou tem alguma pergunta? Me mande uma mensagem!",
+    "labels": {
+      "email": "Email",
+      "phone": "Telefone",
+      "whatsapp": "WhatsApp",
+      "location": "Localização",
+      "github": "GitHub"
     },
+    "locationValue": "Aparecida de Goiânia, GO — Brasil",
+    "action": "Entre em contato",
+    "actionLabel": "Entre em contato pelo WhatsApp (abre nova aba)",
+    "note": "Abra o WhatsApp para conversar sobre um projeto ou integração. Nenhuma mensagem é enviada automaticamente."
   },
-  footer: {
-    madeWith: "Feito com",
-    by: "por",
-    rights: "Todos os direitos reservados.",
-    backToTop: "Voltar ao topo",
-  },
+  "footer": {
+    "madeWith": "Feito com",
+    "by": "por",
+    "rights": "Todos os direitos reservados.",
+    "backToTop": "Voltar ao topo"
+  }
 };
-
-export type Translation = typeof pt;
-
+export type Translation = Omit<typeof pt, "projects"> & { projects: Omit<typeof pt.projects, "featured"> & { featured: Project[] } };
 const en: Translation = {
-  nav: {
-    home: "Home",
-    about: "About",
-    projects: "Projects",
-    skills: "Skills",
-    experience: "Experience",
-    contact: "Contact",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "skills": "Skills",
+    "experience": "Experience",
+    "contact": "Contact"
   },
-  hero: {
-    greeting: "Hi, I'm",
-    titlePre: "Full-Stack",
-    titleH1: "Developer",
-    titleMid: "&",
-    titleH2: "AI",
-    subtitle: "I turn ideas into solutions with code, automation and artificial intelligence. Passionate about technology and innovation.",
-    location: "Aparecida de Goiânia, GO",
-    viewProjects: "View Projects",
+  "hero": {
+    "greeting": "Hi, I'm",
+    "titlePre": "Full-Stack",
+    "titleH1": "Developer",
+    "titleMid": "&",
+    "titleH2": "AI",
+    "subtitle": "I build web applications, integrations and automations with Python and TypeScript, applying AI to business workflows.",
+    "location": "Aparecida de Goiânia, GO",
+    "viewProjects": "View Projects",
+    "resume": "Download résumé (PDF, Portuguese)",
+    "aboutLabel": "Go to About"
   },
-  about: {
-    title: "About Me",
-    subtitle: "Systems Development technician from Sesi-Senai, freelance developer with real-world project experience and international exposure.",
-    p1: [
-      { text: "I'm a developer with a background in " },
-      { text: "Software Development", strong: true },
-      { text: ", " },
-      { text: "Data Analysis", strong: true },
-      { text: " and " },
-      { text: "Artificial Intelligence", strong: true },
-      { text: ". I have experience in web projects, data analysis and applied machine learning, always looking to apply technical knowledge to real-world problems." },
-    ] as Segment[],
-    p2: [
-      { text: "I worked as a " },
-      { text: "freelance web developer", strong: true },
-      { text: " building institutional websites, landing pages and e-commerce, with API and payment system integrations. I was awarded " },
-      { text: "3rd place", strong: true, primary: true },
-      { text: " at the Applied AI Olympiad 2025, training predictive models for Goiás' healthcare system." },
-    ] as (Segment & { primary?: boolean })[],
-    p3: [
-      { text: "I took part in the " },
-      { text: "Goiás pelo Mundo", strong: true },
-      { text: " program, with an exchange in " },
-      { text: "Australia", strong: true },
-      { text: " — English classes at ILSC and cultural immersions. Today I'm " },
-      { text: "co-founder of Quokk Software", strong: true, href: "https://www.quokk-software.com" },
-      { text: ", a software and data studio delivering data cleaning, dashboards, automation and custom web tools." },
-    ] as Segment[],
-    highlights: [
-      { title: "Web Development", desc: "Websites, e-commerce and full-stack applications" },
-      { title: "AI & Machine Learning", desc: "Predictive models and intelligent automation" },
-      { title: "Data Analysis", desc: "Pandas, Excel and data visualization" },
-      { title: "Automation", desc: "WhatsApp bots, Telegram and API integrations" },
-    ],
-    cards: {
-      education: {
-        title: "Education",
-        items: [
-          { name: "Technical Degree in Systems Development", detail: "Sesi-Senai • 2023 — 2025" },
-          { name: "High School Diploma", detail: "Sesi-Senai • 2022 — 2025" },
-        ],
-      },
-      achievements: {
-        title: "Achievements",
-        items: [
-          { name: "3rd Place — Applied AI Olympiad", detail: "2025 • ML for Goiás' public healthcare" },
-          { name: "Mundo Senai 2025", detail: "Project presentations to public and industry" },
-        ],
-      },
-      international: {
-        title: "International Experience",
-        items: [
-          { name: "Goiás pelo Mundo — Australia", detail: "Jul 2026 • English classes at ILSC and cultural immersions" },
-        ],
-      },
-    },
-  },
-  projects: {
-    title: "Featured Projects",
-    subtitle: "Projects showcasing my skills in web development, automation and data science.",
-    b2bBadge: "B2B Product",
-    othersTitle: "Other Projects",
-    viewAll: "View all repositories on GitHub",
-    featured: [
+  "about": {
+    "title": "About Me",
+    "subtitle": "Systems Development technician from Sesi-Senai, freelance developer with real-world project experience and international exposure.",
+    "p1": [
       {
-        name: "WPP AI Bot — B2B Product",
-        description: "SaaS that connects small businesses' WhatsApp to an AI agent trained on company context — products, prices, hours and policies.",
-        highlights: [
-          "Natural-language replies, 24/7",
-          "Business context via RAG",
-          "Handoff to a human agent",
-          "Multi-tenant architecture",
-        ],
-        status: "Under active development",
-        caseStudy: "View case study",
+        "text": "I develop web applications and API integrations with Python and TypeScript. In WPP AI Bot, I work on WhatsApp automation and continuity with human support."
+      }
+    ],
+    "p2": [
+      {
+        "text": "I worked as a "
       },
-      { name: "template-e-commerce", description: "Complete e-commerce template with modern, responsive design. Deployed on Vercel." },
-      { name: "analise_qualidade_de_dados", description: "Data quality analysis with Python and Pandas. Notebooks with visualizations and insights." },
-      { name: "BrasilSemLixo", description: "Social project about conscious waste disposal. Informative landing page on GitHub Pages." },
-      { name: "mundo-senai_2025", description: "Project presented at Mundo Senai 2025 — demonstration of technical solutions for industry." },
-      { name: "Desafio-DLJ-2025", description: "Educational gamification platform built for the Liga Jovem Challenge 2025." },
+      {
+        "text": "freelance web developer",
+        "strong": true
+      },
+      {
+        "text": " building institutional websites, landing pages and e-commerce, with API and payment system integrations. I was awarded "
+      },
+      {
+        "text": "3rd place",
+        "strong": true,
+        "primary": true
+      },
+      {
+        "text": " at the Applied AI Olympiad 2025, training predictive models for Goiás' healthcare system."
+      }
     ],
-  },
-  skills: {
-    title: "Skills",
-    subtitle: "Technologies and tools I use to build solutions.",
-    categories: ["Languages", "Frameworks & Tools", "Data & AI", "Platforms & DevOps"],
-    softTitle: "Soft Skills",
-    soft: ["Problem Solving", "Agile Methodologies", "Teamwork", "Communication", "Fast Learner", "Adaptability"],
-  },
-  experience: {
-    title: "Experience & Education",
-    subtitle: "My journey in technology, education and achievements.",
-    timeline: [
-      { title: "Co-founder — Quokk Software", org: "Software & Data Studio", period: "2026 — Present", desc: "Co-founded a software agency. Data cleaning, dashboards, custom automation and web tools, with fixed-price quotes and on-time delivery." },
-      { title: "Goiás pelo Mundo — Australia", org: "Exchange Program", period: "Jul 2026", desc: "Cultural and educational exchange in Australia. English classes at ILSC and cultural immersions." },
-      { title: "3rd Place — Applied AI Olympiad", org: "Competition", period: "2025", desc: "Machine learning challenges. Training and implementing predictive models applied to Goiás' healthcare system." },
-      { title: "Freelance Web Developer", org: "Self-employed", period: "Jan — Sep 2025", desc: "Built institutional websites, landing pages and custom e-commerce. Requirements gathering, scope definition and API/payment integrations." },
-      { title: "Mundo Senai 2025", org: "Sesi-Senai", period: "Apr 2025", desc: "Presented technical projects to the public and industry professionals. Practical solutions demo and professional networking." },
-      { title: "Inova Project 2024", org: "Sesi-Senai", period: "Sep — Nov 2024", desc: "Innovation project for tech solutions in a multidisciplinary team, with design thinking, prototyping and agile methodologies." },
-      { title: "Junior Achievement — Mini Company & Job Shadow", org: "Entrepreneurship Program", period: "Mar 2024 — Jul 2025", desc: "Hands-on experience in entrepreneurship, business and decision-making. Communication, teamwork and management skills." },
-      { title: "Technical Degree in Systems Development", org: "Sesi-Senai Aparecida de Goiânia", period: "Jan 2023 — Dec 2025", desc: "Technical education in programming, databases, web development and best practices." },
+    "p3": [
+      {
+        "text": "I took part in the "
+      },
+      {
+        "text": "Goiás pelo Mundo",
+        "strong": true
+      },
+      {
+        "text": " program, with an exchange in "
+      },
+      {
+        "text": "Australia",
+        "strong": true
+      },
+      {
+        "text": " — English classes at ILSC and cultural immersions. Today I'm "
+      },
+      {
+        "text": "co-founder of Quokk Software",
+        "strong": true,
+        "href": "https://www.quokk-software.com"
+      },
+      {
+        "text": ", a software and data studio delivering data cleaning, dashboards, automation and custom web tools."
+      }
     ],
-    certificationsTitle: "Certifications",
-    languagesTitle: "Languages",
-    languages: [
-      { name: "Portuguese", level: "Native" },
-      { name: "English", level: "C1" },
+    "highlights": [
+      {
+        "title": "Web Development",
+        "desc": "Websites, e-commerce and full-stack applications"
+      },
+      {
+        "title": "AI & Machine Learning",
+        "desc": "Predictive models and intelligent automation"
+      },
+      {
+        "title": "Data Analysis",
+        "desc": "Pandas, Excel and data visualization"
+      },
+      {
+        "title": "Automation",
+        "desc": "WhatsApp automation and REST API integrations"
+      }
     ],
-    langNote: "International experience: exchange in Australia through the Goiás pelo Mundo program (ILSC, 2026).",
+    "cards": {
+      "education": {
+        "title": "Education",
+        "items": [
+          {
+            "name": "Technical Degree in Systems Development",
+            "detail": "Sesi-Senai • 2023 — 2025"
+          },
+          {
+            "name": "High School Diploma",
+            "detail": "Sesi-Senai • 2022 — 2025"
+          }
+        ]
+      },
+      "achievements": {
+        "title": "Achievements",
+        "items": [
+          {
+            "name": "3rd Place — Applied AI Olympiad",
+            "detail": "2025 • ML for Goiás' public healthcare"
+          },
+          {
+            "name": "Mundo Senai 2025",
+            "detail": "Project presentations to public and industry"
+          }
+        ]
+      },
+      "international": {
+        "title": "International Experience",
+        "items": [
+          {
+            "name": "Goiás pelo Mundo — Australia",
+            "detail": "Jul 2026 • English classes at ILSC and cultural immersions"
+          }
+        ]
+      }
+    }
   },
-  contact: {
-    title: "Get in Touch",
-    subtitle: "Interested in working together or have a question? Send me a message!",
-    labels: { email: "Email", phone: "Phone", whatsapp: "WhatsApp", location: "Location", github: "GitHub" },
-    locationValue: "Aparecida de Goiânia, GO — Brazil",
-    form: {
-      name: "Name",
-      namePlaceholder: "Your name",
-      email: "Email",
-      emailPlaceholder: "you@email.com",
-      message: "Message",
-      messagePlaceholder: "Your message...",
-      submit: "Send Message",
-      sent: "Message sent!",
-      mailSubject: "Portfolio Contact",
+  "projects": {
+    "title": "Featured Projects",
+    "subtitle": "Projects showcasing my skills in web development, automation and data science.",
+    "b2bBadge": "B2B Product",
+    "othersTitle": "Other Projects",
+    "viewAll": "View all repositories on GitHub",
+    "featured": [
+      {
+        "id": "wpp",
+        "name": "WPP AI Bot",
+        "description": "Proprietary B2B product under development for WhatsApp support, deployed and configured per client.",
+        "status": "Under active development",
+        "caseStudy": "View public case study",
+        "highlights": [
+          "Prompt instructions and limited conversation history",
+          "Configurable models via OpenRouter",
+          "Human handoff to Chatwoot"
+        ],
+        "details": [
+          "Problem: recurring questions and continuity between automated and human support. My implementation connects Evolution API, response generation and Chatwoot handoff.",
+          "Decisions: FastAPI and SQLAlchemy with MySQL for application data; OpenRouter through an OpenAI-compatible SDK. PostgreSQL and Redis support the integrations.",
+          "In-development project with architecture documented in the public repository. Client deployment requires configuration and operational validation."
+        ]
+      },
+      {
+        "id": "commerce",
+        "name": "template-e-commerce",
+        "description": "Web e-commerce template. Source available for inspection."
+      },
+      {
+        "id": "data",
+        "name": "analise_qualidade_de_dados",
+        "description": "Exploratory analysis of Ministry of Health expenditure data from December 2023, in a Python notebook.",
+        "details": [
+          "Problem: understand the quality and distribution of expenditure records. The notebook documents data inspection, cleaning, descriptive analysis and visualizations.",
+          "Implementation: Pandas and NumPy for data preparation; Matplotlib and Seaborn for charts; SciPy for statistical analysis.",
+          "Notebook and methodology available in the repository; analysis limited to December 2023. One month does not establish seasonality; findings depend on the source data and cleaning choices."
+        ]
+      },
+      {
+        "id": "brasil",
+        "name": "BrasilSemLixo",
+        "description": "Team-built educational prototype for consulting waste collection schedules, with a public demo.",
+        "details": [
+          "Problem: make collection information easier to consult. I participated in the team project; the implemented module is the Collection Monitor.",
+          "Implementation: HTML, CSS and vanilla JavaScript; neighborhood and street selection, collection-type filters and responsive result cards.",
+          "Evidence: public static demo with fictional local data, without a government API. Recycling guides and drop-off points remain planned, not delivered modules."
+        ]
+      },
+      {
+        "id": "senai",
+        "name": "mundo-senai_2025",
+        "description": "Project associated with Mundo Senai 2025. Public repository available for inspection."
+      },
+      {
+        "id": "dlj",
+        "name": "Desafio-DLJ-2025",
+        "description": "Educational gamification platform prototype for the Liga Jovem Challenge 2025."
+      }
+    ],
+    "detailsLabel": "Implementation and evidence"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technologies and tools I use to build solutions.",
+    "categories": [
+      "Languages",
+      "Web & APIs",
+      "Data & AI",
+      "Infrastructure & Tools"
+    ],
+    "softTitle": "Soft Skills",
+    "soft": [
+      "Problem Solving",
+      "Agile Methodologies",
+      "Teamwork",
+      "Communication",
+      "Fast Learner",
+      "Adaptability"
+    ]
+  },
+  "experience": {
+    "title": "Experience & Education",
+    "subtitle": "My journey in technology, education and achievements.",
+    "timeline": [
+      {
+        "title": "Co-founder — Quokk Software",
+        "org": "Software & Data Studio",
+        "period": "2026 — Present",
+        "desc": "Co-founded a software and data studio. Work on data cleaning, dashboards, custom automation and web tools."
+      },
+      {
+        "title": "Goiás pelo Mundo — Australia",
+        "org": "Exchange Program",
+        "period": "Jul 2026",
+        "desc": "Cultural and educational exchange in Australia. English classes at ILSC and cultural immersions."
+      },
+      {
+        "title": "3rd Place — Applied AI Olympiad",
+        "org": "Competition",
+        "period": "2025",
+        "desc": "Machine learning challenges. Training and implementing predictive models applied to Goiás' healthcare system."
+      },
+      {
+        "title": "Freelance Web Developer",
+        "org": "Self-employed",
+        "period": "Jan — Sep 2025",
+        "desc": "Built institutional websites, landing pages and custom e-commerce. Requirements gathering, scope definition and API/payment integrations."
+      },
+      {
+        "title": "Mundo Senai 2025",
+        "org": "Sesi-Senai",
+        "period": "Apr 2025",
+        "desc": "Presented technical projects to the public and industry professionals. Practical solutions demo and professional networking."
+      },
+      {
+        "title": "Inova Project 2024",
+        "org": "Sesi-Senai",
+        "period": "Sep — Nov 2024",
+        "desc": "Innovation project for tech solutions in a multidisciplinary team, with design thinking, prototyping and agile methodologies."
+      },
+      {
+        "title": "Junior Achievement — Mini Company & Job Shadow",
+        "org": "Entrepreneurship Program",
+        "period": "Mar 2024 — Jul 2025",
+        "desc": "Hands-on experience in entrepreneurship, business and decision-making. Communication, teamwork and management skills."
+      },
+      {
+        "title": "Technical Degree in Systems Development",
+        "org": "Sesi-Senai Aparecida de Goiânia",
+        "period": "Jan 2023 — Dec 2025",
+        "desc": "Technical education in programming, databases, web development and best practices."
+      }
+    ],
+    "certificationsTitle": "Certifications",
+    "languagesTitle": "Languages",
+    "languages": [
+      {
+        "name": "Portuguese",
+        "level": "Native"
+      },
+      {
+        "name": "English",
+        "level": "C1"
+      }
+    ],
+    "langNote": "International experience: exchange in Australia through the Goiás pelo Mundo program (ILSC, 2026)."
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Interested in working together or have a question? Send me a message!",
+    "labels": {
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "location": "Location",
+      "github": "GitHub"
     },
+    "locationValue": "Aparecida de Goiânia, GO — Brazil",
+    "action": "Get in touch",
+    "actionLabel": "Get in touch via WhatsApp (opens a new tab)",
+    "note": "Open WhatsApp to discuss a project or integration. No message is sent automatically."
   },
-  footer: {
-    madeWith: "Made with",
-    by: "by",
-    rights: "All rights reserved.",
-    backToTop: "Back to top",
-  },
+  "footer": {
+    "madeWith": "Made with",
+    "by": "by",
+    "rights": "All rights reserved.",
+    "backToTop": "Back to top"
+  }
 };
-
 export const translations: Record<Language, Translation> = { pt, en };
