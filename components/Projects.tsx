@@ -37,74 +37,85 @@ export default function Projects() {
                   meta.b2b ? "border-primary/60" : "border-border hover:border-primary/50"
                 }`}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <Github size={24} className="text-muted group-hover:text-primary transition-colors"  aria-hidden="true" />
-                  <div className="flex items-center gap-3">
-                    {meta.b2b && (
-                      <span className="flex items-center gap-1 text-xs bg-primary/20 text-primary px-2 py-1 rounded font-medium">
-                        <Lock size={12}  aria-hidden="true" /> {t.projects.b2bBadge}
+                {meta.descriptionOnly ? (
+                  <>
+                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                      {project.name}
+                    </h3>
+                    <p className="text-sm text-muted">{project.description}</p>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex items-start justify-between mb-4">
+                      <Github size={24} className="text-muted group-hover:text-primary transition-colors"  aria-hidden="true" />
+                      <div className="flex items-center gap-3">
+                        {meta.b2b && (
+                          <span className="flex items-center gap-1 text-xs bg-primary/20 text-primary px-2 py-1 rounded font-medium">
+                            <Lock size={12}  aria-hidden="true" /> {t.projects.b2bBadge}
+                          </span>
+                        )}
+                        {meta.url && (
+                          <a aria-label={`${project.name} — GitHub`} href={meta.url} target="_blank" rel="noopener noreferrer"
+                             className="text-muted hover:text-foreground transition-colors">
+                            <Github size={18}  aria-hidden="true" />
+                          </a>
+                        )}
+                        {meta.demo && (
+                          <a aria-label={`${project.name} — Demo`} href={meta.demo} target="_blank" rel="noopener noreferrer"
+                             className="text-muted hover:text-foreground transition-colors">
+                            <ExternalLink size={18}  aria-hidden="true" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+
+                    <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                      {project.name}
+                    </h3>
+                    {project.status && (
+                      <span className="inline-flex items-center gap-1.5 text-xs text-emerald-700 mb-3">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                        {project.status}
                       </span>
                     )}
-                    {meta.url && (
-                      <a aria-label={`${project.name} — GitHub`} href={meta.url} target="_blank" rel="noopener noreferrer"
-                         className="text-muted hover:text-foreground transition-colors">
-                        <Github size={18}  aria-hidden="true" />
-                      </a>
+                    <p className={`text-sm text-muted mb-4 ${meta.b2b ? "" : "line-clamp-3"}`}>{project.description}</p>
+
+                    {project.highlights && (
+                      <ul className="space-y-1.5 mb-4">
+                        {project.highlights.map((h) => (
+                          <li key={h} className="flex items-start gap-2 text-sm">
+                            <Check size={16} className="text-primary shrink-0 mt-0.5"  aria-hidden="true" />
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
                     )}
-                    {meta.demo && (
-                      <a aria-label={`${project.name} — Demo`} href={meta.demo} target="_blank" rel="noopener noreferrer"
-                         className="text-muted hover:text-foreground transition-colors">
-                        <ExternalLink size={18}  aria-hidden="true" />
-                      </a>
+
+                    {project.details && (
+                      <details className="mb-4 text-sm text-muted">
+                        <summary className="cursor-pointer text-primary font-medium">{t.projects.detailsLabel}</summary>
+                        <div className="mt-3 space-y-3">
+                          {project.details.map((detail) => <p key={detail}>{detail}</p>)}
+                        </div>
+                      </details>
                     )}
-                  </div>
-                </div>
 
-                <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
-                  {project.name}
-                </h3>
-                {project.status && (
-                  <span className="inline-flex items-center gap-1.5 text-xs text-emerald-700 mb-3">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                    {project.status}
-                  </span>
-                )}
-                <p className={`text-sm text-muted mb-4 ${meta.b2b ? "" : "line-clamp-3"}`}>{project.description}</p>
-
-                {project.highlights && (
-                  <ul className="space-y-1.5 mb-4">
-                    {project.highlights.map((h) => (
-                      <li key={h} className="flex items-start gap-2 text-sm">
-                        <Check size={16} className="text-primary shrink-0 mt-0.5"  aria-hidden="true" />
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {project.details && (
-                  <details className="mb-4 text-sm text-muted">
-                    <summary className="cursor-pointer text-primary font-medium">{t.projects.detailsLabel}</summary>
-                    <div className="mt-3 space-y-3">
-                      {project.details.map((detail) => <p key={detail}>{detail}</p>)}
+                    <div className="flex flex-wrap gap-2">
+                      {meta.tech.map((tech) => (
+                        <span key={tech} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                          {tech}
+                        </span>
+                      ))}
                     </div>
-                  </details>
-                )}
 
-                <div className="flex flex-wrap gap-2">
-                  {meta.tech.map((tech) => (
-                    <span key={tech} className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {project.caseStudy && meta.url && (
-                  <a aria-label={`${project.name} — GitHub`} href={meta.url} target="_blank" rel="noopener noreferrer"
-                     className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-primary hover:text-primary-dark transition-colors">
-                    {project.caseStudy}
-                    <ArrowRight size={16}  aria-hidden="true" />
-                  </a>
+                    {project.caseStudy && meta.url && (
+                      <a aria-label={`${project.name} — GitHub`} href={meta.url} target="_blank" rel="noopener noreferrer"
+                         className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-primary hover:text-primary-dark transition-colors">
+                        {project.caseStudy}
+                        <ArrowRight size={16}  aria-hidden="true" />
+                      </a>
+                    )}
+                  </>
                 )}
               </motion.div>
             );

@@ -13,20 +13,17 @@ React Icons e Lucide React.
 
 - Hero: apresentação, projetos e download do currículo.
 - Sobre: Quokk Software, formação Sesi-Senai, premiação e Austrália em 2026.
-- Projetos: seis destaques, na mesma ordem em PT/EN: WPP AI Bot, Bot Telegram
-  de Promoções, Análise de Qualidade de Dados, Portfólio pessoal, BrasilSemLixo
-  e ZeroDay Sentinel.
+- Projetos: cinco destaques, na mesma ordem em PT/EN: WPP AI Bot, Bot Telegram
+  de Promoções, Análise de Qualidade de Dados, BrasilSemLixo e Secretária Virtual Quokk.
 - Outros Projetos: quatro links — template-e-commerce, mundo-senai_2025,
-  Mundo-Invertido e My-KDE_configs. Sem duplicar o portfólio.
-- Cinco cases expansíveis: WPP AI Bot, Bot Telegram de Promoções, análise
-  de gastos da saúde de dezembro de 2023, BrasilSemLixo e ZeroDay Sentinel.
+  Mundo-Invertido e My-KDE_configs.
+- Quatro cases expansíveis: WPP AI Bot, Bot Telegram de Promoções, análise
+  de gastos da saúde de dezembro de 2023 e BrasilSemLixo.
+- Secretária Virtual Quokk: somente nome e descrição PT/EN, sem links,
+  tecnologias, status, ícones ou case expansível.
 - Telegram: agendamento, curadoria por LLM ou heurística, deduplicação, API
   HTTP e simulação. Fontes scraping/API têm limitações de acesso e coleta;
   histórico local não garante eliminar duplicidades entre origens.
-- ZeroDay Sentinel: protótipo educacional conceitual, com alertas, filtros,
-  timeline e contenção simulada; sem varredura ou correção automática reais.
-  Código privado; cartão PT/EN informa esse status, sem link de repositório
-  ou demo. Cinco destaques possuem links públicos de repositório/showcase.
 - WPP AI Bot: produto B2B proprietário em desenvolvimento, implantação por
   cliente, contexto por prompt e histórico limitado, OpenRouter e Chatwoot.
   Link apenas para showcase público; código comercial não integra este site.

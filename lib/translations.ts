@@ -177,11 +177,6 @@ const pt = {
         ]
       },
       {
-        "id": "portfolio",
-        "name": "Portfólio pessoal",
-        "description": "Este portfólio em Next.js 14, React, TypeScript, Tailwind CSS e Framer Motion, com conteúdo PT/EN, download do currículo, CTA WhatsApp e layout responsivo."
-      },
-      {
         "id": "brasil",
         "name": "BrasilSemLixo",
         "description": "Protótipo educativo em equipe para consulta de horários de coleta de resíduos, com demonstração pública.",
@@ -192,14 +187,9 @@ const pt = {
         ]
       },
       {
-        "id": "zeroday",
-        "name": "ZeroDay Sentinel",
-        "status": "Protótipo acadêmico · código privado",
-        "description": "Protótipo educacional e conceitual de painel de resposta a vulnerabilidades.",
-        "details": [
-          "Next.js 14, React 18 e TypeScript: painel de alertas, busca e filtros por severidade, timeline de incidentes e simulação de contenção.",
-          "Demonstração acadêmica com ameaças simuladas; não executa varredura, detecção por IA ou correção automática reais."
-        ]
+        "id": "secretaria",
+        "name": "Secretária Virtual Quokk",
+        "description": "Assistente virtual para atendimento comercial pelo WhatsApp, com coleta de solicitações, confirmação dos dados com o cliente e organização das demandas para acompanhamento pela equipe."
       }
     ],
     "detailsLabel": "Implementação e evidências"
@@ -489,11 +479,6 @@ const en: Translation = {
         ]
       },
       {
-        "id": "portfolio",
-        "name": "Personal portfolio",
-        "description": "This portfolio uses Next.js 14, React, TypeScript, Tailwind CSS and Framer Motion, with PT/EN content, résumé download, WhatsApp CTA and a responsive layout."
-      },
-      {
         "id": "brasil",
         "name": "BrasilSemLixo",
         "description": "Team-built educational prototype for consulting waste collection schedules, with a public demo.",
@@ -504,14 +489,9 @@ const en: Translation = {
         ]
       },
       {
-        "id": "zeroday",
-        "name": "ZeroDay Sentinel",
-        "status": "Academic prototype · private source",
-        "description": "Educational, conceptual prototype of a vulnerability response dashboard.",
-        "details": [
-          "Next.js 14, React 18 and TypeScript: alert dashboard, search and severity filters, incident timeline and containment simulation.",
-          "Academic demonstration with simulated threats; no real scanning, AI detection or automatic remediation."
-        ]
+        "id": "secretaria",
+        "name": "Quokk Virtual Secretary",
+        "description": "Virtual assistant for business customer service on WhatsApp, collecting requests, confirming information with the customer and organizing requests for the team to follow up."
       }
     ],
     "detailsLabel": "Implementation and evidence"

@@ -3,13 +3,12 @@ export const contact = {
   resume: "/Ian_Alves_Sousa_Curriculo.pdf",
 };
 
-export const projectsMeta: Record<string, { tech: string[]; url?: string; demo?: string; b2b?: boolean }> = {
+export const projectsMeta: Record<string, { tech: string[]; url?: string; demo?: string; b2b?: boolean; descriptionOnly?: boolean }> = {
   wpp: { tech: ["Python", "FastAPI", "SQLAlchemy", "MySQL", "OpenRouter", "Evolution API", "Chatwoot", "Docker"], url: "https://github.com/Sousaian/wpp-ai-bot-showcase", b2b: true },
   telegram: { tech: ["TypeScript", "Node.js", "Telegraf", "Express"], url: "https://github.com/Sousaian/bot-telegram-promo-es" },
-  portfolio: { tech: ["Next.js 14", "React", "TypeScript", "Tailwind CSS", "Framer Motion"], url: "https://github.com/Sousaian/portfolio" },
-  zeroday: { tech: ["Next.js 14", "React 18", "TypeScript"] },
   data: { tech: ["Python", "Pandas", "NumPy", "Jupyter", "Matplotlib", "Seaborn", "SciPy"], url: "https://github.com/Sousaian/analise_qualidade_de_dados" },
   brasil: { tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"], url: "https://github.com/Sousaian/BrasilSemLixo", demo: "https://sousaian.github.io/BrasilSemLixo/" },
+  secretaria: { tech: [], descriptionOnly: true },
 };
 
 export const otherProjects = [
