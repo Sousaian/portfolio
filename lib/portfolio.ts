@@ -3,14 +3,20 @@ export const contact = {
   resume: "/Ian_Alves_Sousa_Curriculo.pdf",
 };
 
-export const projectsMeta: Record<string, { tech: string[]; url?: string; demo?: string; b2b?: boolean }> = {
+export const projectsMeta: Record<string, { tech: string[]; url?: string; demo?: string; b2b?: boolean; descriptionOnly?: boolean }> = {
   wpp: { tech: ["Python", "FastAPI", "SQLAlchemy", "MySQL", "OpenRouter", "Evolution API", "Chatwoot", "Docker"], url: "https://github.com/Sousaian/wpp-ai-bot-showcase", b2b: true },
-  commerce: { tech: ["JavaScript", "E-commerce"], url: "https://github.com/Sousaian/template-e-commerce" },
+  telegram: { tech: ["TypeScript", "Node.js", "Telegraf", "Express"], url: "https://github.com/Sousaian/bot-telegram-promo-es" },
   data: { tech: ["Python", "Pandas", "NumPy", "Jupyter", "Matplotlib", "Seaborn", "SciPy"], url: "https://github.com/Sousaian/analise_qualidade_de_dados" },
   brasil: { tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"], url: "https://github.com/Sousaian/BrasilSemLixo", demo: "https://sousaian.github.io/BrasilSemLixo/" },
-  senai: { tech: ["JavaScript"], url: "https://github.com/Sousaian/mundo-senai_2025" },
-  dlj: { tech: ["TypeScript", "Vercel"], demo: "https://v0-educational-gamification-platfor-seven.vercel.app" },
+  secretaria: { tech: [], descriptionOnly: true },
 };
+
+export const otherProjects = [
+  { id: "commerce", name: "template-e-commerce", tech: "JavaScript • E-commerce", url: "https://github.com/Sousaian/template-e-commerce" },
+  { id: "senai", name: "mundo-senai_2025", tech: "JavaScript", url: "https://github.com/Sousaian/mundo-senai_2025" },
+  { id: "mundo", name: "Mundo-Invertido", tech: "HTML • CSS • JavaScript", url: "https://github.com/Sousaian/Mundo-Invertido" },
+  { id: "kde", name: "My-KDE_configs", tech: "Shell", url: "https://github.com/Sousaian/My-KDE_configs" },
+];
 
 export const certifications: { name: string; org?: string; hours?: number }[] = [
   { name: "Python", org: "Kaggle", hours: 5 },

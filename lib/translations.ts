@@ -158,13 +158,17 @@ const pt = {
         ]
       },
       {
-        "id": "commerce",
-        "name": "template-e-commerce",
-        "description": "Template web de e-commerce. Código disponível para consulta."
+        "id": "telegram",
+        "name": "Bot Telegram de Promoções",
+        "description": "Bot em TypeScript para curadoria e publicação de promoções no Telegram.",
+        "details": [
+          "Node.js, Telegraf e Express: agendamento, curadoria por LLM ou heurística, deduplicação, API HTTP e simulação sem publicar.",
+          "A coleta por scraping e APIs está sujeita a captchas, mudanças de HTML e restrições de acesso; Mercado Livre é experimental. Histórico local não elimina toda duplicidade entre origens; sem verificação de menor preço histórico."
+        ]
       },
       {
         "id": "data",
-        "name": "analise_qualidade_de_dados",
+        "name": "Análise de Qualidade de Dados",
         "description": "Análise exploratória de gastos do Ministério da Saúde de dezembro de 2023, em notebook Python.",
         "details": [
           "Problema: compreender qualidade e distribuição dos registros de gastos. O notebook documenta inspeção, limpeza, análise descritiva e visualizações.",
@@ -183,14 +187,9 @@ const pt = {
         ]
       },
       {
-        "id": "senai",
-        "name": "mundo-senai_2025",
-        "description": "Projeto associado ao Mundo Senai 2025. Repositório público disponível para consulta."
-      },
-      {
-        "id": "dlj",
-        "name": "Desafio-DLJ-2025",
-        "description": "Protótipo de plataforma de gamificação educacional para o Desafio Liga Jovem 2025."
+        "id": "secretaria",
+        "name": "Secretária Virtual Quokk",
+        "description": "Assistente virtual para atendimento comercial pelo WhatsApp, com coleta de solicitações, confirmação dos dados com o cliente e organização das demandas para acompanhamento pela equipe."
       }
     ],
     "detailsLabel": "Implementação e evidências"
@@ -461,13 +460,17 @@ const en: Translation = {
         ]
       },
       {
-        "id": "commerce",
-        "name": "template-e-commerce",
-        "description": "Web e-commerce template. Source available for inspection."
+        "id": "telegram",
+        "name": "Bot Telegram de Promoções",
+        "description": "TypeScript bot for curating and publishing promotions on Telegram.",
+        "details": [
+          "Node.js, Telegraf and Express: scheduling, LLM or heuristic curation, deduplication, HTTP API and simulation without publishing.",
+          "Scraping and API collection is subject to captchas, HTML changes and access restrictions; Mercado Livre is experimental. Local history does not eliminate all cross-source duplicates; no historical lowest-price verification."
+        ]
       },
       {
         "id": "data",
-        "name": "analise_qualidade_de_dados",
+        "name": "Data Quality Analysis",
         "description": "Exploratory analysis of Ministry of Health expenditure data from December 2023, in a Python notebook.",
         "details": [
           "Problem: understand the quality and distribution of expenditure records. The notebook documents data inspection, cleaning, descriptive analysis and visualizations.",
@@ -486,14 +489,9 @@ const en: Translation = {
         ]
       },
       {
-        "id": "senai",
-        "name": "mundo-senai_2025",
-        "description": "Project associated with Mundo Senai 2025. Public repository available for inspection."
-      },
-      {
-        "id": "dlj",
-        "name": "Desafio-DLJ-2025",
-        "description": "Educational gamification platform prototype for the Liga Jovem Challenge 2025."
+        "id": "secretaria",
+        "name": "Quokk Virtual Secretary",
+        "description": "Virtual assistant for business customer service on WhatsApp, collecting requests, confirming information with the customer and organizing requests for the team to follow up."
       }
     ],
     "detailsLabel": "Implementation and evidence"

@@ -13,9 +13,17 @@ React Icons e Lucide React.
 
 - Hero: apresentação, projetos e download do currículo.
 - Sobre: Quokk Software, formação Sesi-Senai, premiação e Austrália em 2026.
-- Projetos: seis destaques e outros repositórios, sem remoção dos projetos existentes.
-- Cases expansíveis: WPP AI Bot, análise exploratória de gastos da saúde
-  de dezembro de 2023 e BrasilSemLixo.
+- Projetos: cinco destaques, na mesma ordem em PT/EN: WPP AI Bot, Bot Telegram
+  de Promoções, Análise de Qualidade de Dados, BrasilSemLixo e Secretária Virtual Quokk.
+- Outros Projetos: quatro links — template-e-commerce, mundo-senai_2025,
+  Mundo-Invertido e My-KDE_configs.
+- Quatro cases expansíveis: WPP AI Bot, Bot Telegram de Promoções, análise
+  de gastos da saúde de dezembro de 2023 e BrasilSemLixo.
+- Secretária Virtual Quokk: somente nome e descrição PT/EN, sem links,
+  tecnologias, status, ícones ou case expansível.
+- Telegram: agendamento, curadoria por LLM ou heurística, deduplicação, API
+  HTTP e simulação. Fontes scraping/API têm limitações de acesso e coleta;
+  histórico local não garante eliminar duplicidades entre origens.
 - WPP AI Bot: produto B2B proprietário em desenvolvimento, implantação por
   cliente, contexto por prompt e histórico limitado, OpenRouter e Chatwoot.
   Link apenas para showcase público; código comercial não integra este site.

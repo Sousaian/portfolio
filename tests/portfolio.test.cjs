@@ -22,7 +22,7 @@ function load(file, language = "pt") {
   return exports;
 }
 const { translations } = load("lib/translations.ts");
-const { contact, projectsMeta, certifications, certificationDetail } = load("lib/portfolio.ts");
+const { contact, projectsMeta, otherProjects, certifications, certificationDetail } = load("lib/portfolio.ts");
 const render = (component, lang) => renderToStaticMarkup(React.createElement(load(component, lang).default));
 
 test("WhatsApp contact: actual accessible link, no form or false success", () => {
@@ -54,17 +54,20 @@ test("approved PDF: eligible, unchanged, local download in both languages", () =
 });
 
 test("bilingual project IDs and metadata match; priority cases expose evidence", () => {
+  const expected = ["wpp", "telegram", "data", "brasil", "secretaria"];
+  assert.deepEqual(Object.keys(projectsMeta).sort(), [...expected].sort());
+  assert.equal(JSON.stringify(translations.pt.projects.featured.map(p => p.id)), JSON.stringify(expected));
   assert.equal(JSON.stringify(translations.pt.projects.featured.map(p => p.id)),
     JSON.stringify(translations.en.projects.featured.map(p => p.id)));
   for (const lang of ["pt", "en"]) {
     const projects = translations[lang].projects.featured;
-    assert.equal(new Set(projects.map(p => p.id)).size, 6);
-    for (const p of projects) assert.ok(projectsMeta[p.id]?.tech.length);
+    assert.equal(new Set(projects.map(p => p.id)).size, 5);
+    for (const p of projects.filter(p => p.id !== "secretaria")) assert.ok(projectsMeta[p.id]?.tech.length);
     for (const id of ["wpp", "data", "brasil"]) {
       assert.equal(projects.find(p => p.id === id).details.length, 3);
     }
     const html = render("components/Projects.tsx", lang);
-    assert.equal((html.match(/<details/g) || []).length, 3);
+    assert.equal((html.match(/<details/g) || []).length, 4);
     assert.doesNotMatch(html, /undefined/);
     const wpp = JSON.stringify(projects.find(p => p.id === "wpp"));
     assert.doesNotMatch(wpp, /RAG|SaaS|24\/7|treinad|trained|multi.tenant|isolamento integral|complete isolation/i);
@@ -131,5 +134,67 @@ test("public cases retain scope without portfolio-review process disclaimers", (
     assert.match(data, /metodologia|methodology/);
     assert.match(data, /sazonalidade|seasonality/);
     assert.match(JSON.stringify(cases.find(p => p.id === "wpp")), /validação operacional|operational validation/);
+  }
+});
+
+test("selected projects: repository links, scope and four unique other projects", () => {
+  const urls = {
+    wpp: "wpp-ai-bot-showcase",
+    telegram: "bot-telegram-promo-es",
+    data: "analise_qualidade_de_dados",
+    brasil: "BrasilSemLixo",
+  };
+  for (const [id, repo] of Object.entries(urls)) {
+    assert.equal(projectsMeta[id].url, "https://github.com/Sousaian/" + repo);
+  }
+
+  assert.equal(otherProjects.length, 4);
+  assert.equal(new Set(otherProjects.map(p => p.id)).size, 4);
+  assert.equal(new Set(otherProjects.map(p => p.url)).size, 4);
+  assert.equal(JSON.stringify(otherProjects.map(p => p.name)),
+    JSON.stringify(["template-e-commerce", "mundo-senai_2025", "Mundo-Invertido", "My-KDE_configs"]));
+  assert.ok(otherProjects.every(p => !projectsMeta[p.id] && p.url === "https://github.com/Sousaian/" + p.name));
+  const excluded = /portf[oó]lio|portfolio|zeroday|zero-day|EduInvest|\bdlj\b|Desafio-DLJ-2025|v0-educational-gamification-platfor-seven\.vercel\.app/i;
+  assert.doesNotMatch(JSON.stringify({ projectsMeta, otherProjects }), excluded);
+  for (const lang of ["pt", "en"]) {
+    const projects = translations[lang].projects.featured;
+    const html = render("components/Projects.tsx", lang);
+    assert.doesNotMatch(JSON.stringify(projects), excluded);
+    assert.doesNotMatch(html, excluded);
+    for (const [id, repo] of Object.entries(urls)) {
+      assert.ok(html.includes('href="https://github.com/Sousaian/' + repo + '"'));
+    }
+    for (const p of otherProjects) assert.ok(html.includes('href="' + p.url + '"'));
+    assert.match(JSON.stringify(projects.find(p => p.id === "telegram")), /heurística|heuristic/);
+    assert.match(JSON.stringify(projects.find(p => p.id === "telegram")), /captcha/);
+  }
+  assert.ok(certifications.some(c => c.name === "Desafio Liga Jovem"));
+});
+
+test("secretary: bilingual description-only card has exactly heading and paragraph", () => {
+  assert.equal(projectsMeta.secretaria.descriptionOnly, true);
+  assert.equal(JSON.stringify(projectsMeta.secretaria), JSON.stringify({ tech: [], descriptionOnly: true }));
+  const expected = {
+    pt: {
+      id: "secretaria",
+      name: "Secretária Virtual Quokk",
+      description: "Assistente virtual para atendimento comercial pelo WhatsApp, com coleta de solicitações, confirmação dos dados com o cliente e organização das demandas para acompanhamento pela equipe.",
+    },
+    en: {
+      id: "secretaria",
+      name: "Quokk Virtual Secretary",
+      description: "Virtual assistant for business customer service on WhatsApp, collecting requests, confirming information with the customer and organizing requests for the team to follow up.",
+    },
+  };
+  for (const lang of ["pt", "en"]) {
+    const project = translations[lang].projects.featured.find(p => p.id === "secretaria");
+    assert.equal(JSON.stringify(project), JSON.stringify(expected[lang]));
+    const html = render("components/Projects.tsx", lang);
+    // Card contains no nested wrappers: inspect its complete rendered children.
+    const card = html.match(/<div[^>]*>(<h3[^>]*>[^<]*<\/h3><p[^>]*>[^<]*<\/p>)<\/div>/g)
+      ?.find(card => card.includes(project.name));
+    assert.ok(card, "description-only card must render exactly h3 + p");
+    assert.ok(card.includes(project.description));
+    assert.doesNotMatch(card, /<a\b|<details\b|<summary\b|<span\b|<svg\b|<ul\b|line-clamp|href=|status|data-tech/i);
   }
 });
