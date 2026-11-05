@@ -22,7 +22,7 @@ function load(file, language = "pt") {
   return exports;
 }
 const { translations } = load("lib/translations.ts");
-const { contact, projectsMeta, certifications, certificationDetail } = load("lib/portfolio.ts");
+const { contact, projectsMeta, otherProjects, certifications, certificationDetail } = load("lib/portfolio.ts");
 const render = (component, lang) => renderToStaticMarkup(React.createElement(load(component, lang).default));
 
 test("WhatsApp contact: actual accessible link, no form or false success", () => {
@@ -54,6 +54,9 @@ test("approved PDF: eligible, unchanged, local download in both languages", () =
 });
 
 test("bilingual project IDs and metadata match; priority cases expose evidence", () => {
+  const expected = ["wpp", "telegram", "data", "portfolio", "brasil", "zeroday"];
+  assert.deepEqual(Object.keys(projectsMeta).sort(), [...expected].sort());
+  assert.equal(JSON.stringify(translations.pt.projects.featured.map(p => p.id)), JSON.stringify(expected));
   assert.equal(JSON.stringify(translations.pt.projects.featured.map(p => p.id)),
     JSON.stringify(translations.en.projects.featured.map(p => p.id)));
   for (const lang of ["pt", "en"]) {
@@ -64,7 +67,7 @@ test("bilingual project IDs and metadata match; priority cases expose evidence",
       assert.equal(projects.find(p => p.id === id).details.length, 3);
     }
     const html = render("components/Projects.tsx", lang);
-    assert.equal((html.match(/<details/g) || []).length, 3);
+    assert.equal((html.match(/<details/g) || []).length, 5);
     assert.doesNotMatch(html, /undefined/);
     const wpp = JSON.stringify(projects.find(p => p.id === "wpp"));
     assert.doesNotMatch(wpp, /RAG|SaaS|24\/7|treinad|trained|multi.tenant|isolamento integral|complete isolation/i);
@@ -132,4 +135,49 @@ test("public cases retain scope without portfolio-review process disclaimers", (
     assert.match(data, /sazonalidade|seasonality/);
     assert.match(JSON.stringify(cases.find(p => p.id === "wpp")), /validação operacional|operational validation/);
   }
+});
+
+test("selected projects: repository links, scope and four unique other projects", () => {
+  const urls = {
+    wpp: "wpp-ai-bot-showcase",
+    telegram: "bot-telegram-promo-es",
+    data: "analise_qualidade_de_dados",
+    portfolio: "portfolio",
+    brasil: "BrasilSemLixo",
+  };
+  for (const [id, repo] of Object.entries(urls)) {
+    assert.equal(projectsMeta[id].url, "https://github.com/Sousaian/" + repo);
+  }
+  assert.equal(Object.hasOwn(projectsMeta.zeroday, "url"), false);
+  assert.equal(Object.hasOwn(projectsMeta.zeroday, "demo"), false);
+  assert.equal(otherProjects.length, 4);
+  assert.equal(new Set(otherProjects.map(p => p.id)).size, 4);
+  assert.equal(new Set(otherProjects.map(p => p.url)).size, 4);
+  assert.equal(JSON.stringify(otherProjects.map(p => p.name)),
+    JSON.stringify(["template-e-commerce", "mundo-senai_2025", "Mundo-Invertido", "My-KDE_configs"]));
+  assert.ok(otherProjects.every(p => !projectsMeta[p.id] && p.url === "https://github.com/Sousaian/" + p.name));
+  const excluded = /EduInvest|Desafio-DLJ-2025|v0-educational-gamification-platfor-seven\.vercel\.app/i;
+  assert.doesNotMatch(JSON.stringify({ projectsMeta, otherProjects }), excluded);
+  for (const lang of ["pt", "en"]) {
+    const projects = translations[lang].projects.featured;
+    const html = render("components/Projects.tsx", lang);
+    assert.doesNotMatch(JSON.stringify(projects), excluded);
+    assert.doesNotMatch(html, excluded);
+    const privateStatus = lang === "pt"
+      ? "Protótipo acadêmico · código privado"
+      : "Academic prototype · private source";
+    assert.equal(projects.find(p => p.id === "zeroday").status, privateStatus);
+    assert.ok(html.includes(privateStatus));
+    assert.doesNotMatch(html, /href="[^"]*zero-day-defense-dashboard[^"]*"/);
+    for (const [id, repo] of Object.entries(urls)) {
+      assert.ok(html.includes('href="https://github.com/Sousaian/' + repo + '"'));
+    }
+    for (const p of otherProjects) assert.ok(html.includes('href="' + p.url + '"'));
+    assert.equal((html.match(/href="https:\/\/github.com\/Sousaian\/portfolio"/g) || []).length, 1);
+    assert.match(JSON.stringify(projects.find(p => p.id === "telegram")), /heurística|heuristic/);
+    assert.match(JSON.stringify(projects.find(p => p.id === "telegram")), /captcha/);
+    assert.match(JSON.stringify(projects.find(p => p.id === "zeroday")), /conceitual|conceptual/);
+    assert.match(JSON.stringify(projects.find(p => p.id === "zeroday")), /simula/);
+  }
+  assert.ok(certifications.some(c => c.name === "Desafio Liga Jovem"));
 });

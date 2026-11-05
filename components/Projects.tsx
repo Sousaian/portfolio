@@ -5,13 +5,7 @@ import { useRef } from "react";
 import { ExternalLink, Github, Lock, Check, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
-import { projectsMeta } from "@/lib/portfolio";
-
-const otherProjects = [
-  { name: "Mundo-Invertido", tech: "HTML • CSS • JavaScript", url: "https://github.com/Sousaian/Mundo-Invertido" },
-  { name: "My-KDE_configs", tech: "Shell", url: "https://github.com/Sousaian/My-KDE_configs" },
-  { name: "portfolio", tech: "TypeScript", url: "https://github.com/Sousaian/portfolio" },
-];
+import { projectsMeta, otherProjects } from "@/lib/portfolio";
 
 export default function Projects() {
   const ref = useRef(null);

@@ -158,19 +158,28 @@ const pt = {
         ]
       },
       {
-        "id": "commerce",
-        "name": "template-e-commerce",
-        "description": "Template web de e-commerce. Código disponível para consulta."
+        "id": "telegram",
+        "name": "Bot Telegram de Promoções",
+        "description": "Bot em TypeScript para curadoria e publicação de promoções no Telegram.",
+        "details": [
+          "Node.js, Telegraf e Express: agendamento, curadoria por LLM ou heurística, deduplicação, API HTTP e simulação sem publicar.",
+          "A coleta por scraping e APIs está sujeita a captchas, mudanças de HTML e restrições de acesso; Mercado Livre é experimental. Histórico local não elimina toda duplicidade entre origens; sem verificação de menor preço histórico."
+        ]
       },
       {
         "id": "data",
-        "name": "analise_qualidade_de_dados",
+        "name": "Análise de Qualidade de Dados",
         "description": "Análise exploratória de gastos do Ministério da Saúde de dezembro de 2023, em notebook Python.",
         "details": [
           "Problema: compreender qualidade e distribuição dos registros de gastos. O notebook documenta inspeção, limpeza, análise descritiva e visualizações.",
           "Implementação: Pandas e NumPy na preparação dos dados; Matplotlib e Seaborn nos gráficos; SciPy na análise estatística.",
           "Notebook e metodologia disponíveis no repositório; análise restrita a dezembro de 2023. Um mês não estabelece sazonalidade; conclusões dependem dos dados de origem e das escolhas de limpeza."
         ]
+      },
+      {
+        "id": "portfolio",
+        "name": "Portfólio pessoal",
+        "description": "Este portfólio em Next.js 14, React, TypeScript, Tailwind CSS e Framer Motion, com conteúdo PT/EN, download do currículo, CTA WhatsApp e layout responsivo."
       },
       {
         "id": "brasil",
@@ -183,14 +192,14 @@ const pt = {
         ]
       },
       {
-        "id": "senai",
-        "name": "mundo-senai_2025",
-        "description": "Projeto associado ao Mundo Senai 2025. Repositório público disponível para consulta."
-      },
-      {
-        "id": "dlj",
-        "name": "Desafio-DLJ-2025",
-        "description": "Protótipo de plataforma de gamificação educacional para o Desafio Liga Jovem 2025."
+        "id": "zeroday",
+        "name": "ZeroDay Sentinel",
+        "status": "Protótipo acadêmico · código privado",
+        "description": "Protótipo educacional e conceitual de painel de resposta a vulnerabilidades.",
+        "details": [
+          "Next.js 14, React 18 e TypeScript: painel de alertas, busca e filtros por severidade, timeline de incidentes e simulação de contenção.",
+          "Demonstração acadêmica com ameaças simuladas; não executa varredura, detecção por IA ou correção automática reais."
+        ]
       }
     ],
     "detailsLabel": "Implementação e evidências"
@@ -461,19 +470,28 @@ const en: Translation = {
         ]
       },
       {
-        "id": "commerce",
-        "name": "template-e-commerce",
-        "description": "Web e-commerce template. Source available for inspection."
+        "id": "telegram",
+        "name": "Bot Telegram de Promoções",
+        "description": "TypeScript bot for curating and publishing promotions on Telegram.",
+        "details": [
+          "Node.js, Telegraf and Express: scheduling, LLM or heuristic curation, deduplication, HTTP API and simulation without publishing.",
+          "Scraping and API collection is subject to captchas, HTML changes and access restrictions; Mercado Livre is experimental. Local history does not eliminate all cross-source duplicates; no historical lowest-price verification."
+        ]
       },
       {
         "id": "data",
-        "name": "analise_qualidade_de_dados",
+        "name": "Data Quality Analysis",
         "description": "Exploratory analysis of Ministry of Health expenditure data from December 2023, in a Python notebook.",
         "details": [
           "Problem: understand the quality and distribution of expenditure records. The notebook documents data inspection, cleaning, descriptive analysis and visualizations.",
           "Implementation: Pandas and NumPy for data preparation; Matplotlib and Seaborn for charts; SciPy for statistical analysis.",
           "Notebook and methodology available in the repository; analysis limited to December 2023. One month does not establish seasonality; findings depend on the source data and cleaning choices."
         ]
+      },
+      {
+        "id": "portfolio",
+        "name": "Personal portfolio",
+        "description": "This portfolio uses Next.js 14, React, TypeScript, Tailwind CSS and Framer Motion, with PT/EN content, résumé download, WhatsApp CTA and a responsive layout."
       },
       {
         "id": "brasil",
@@ -486,14 +504,14 @@ const en: Translation = {
         ]
       },
       {
-        "id": "senai",
-        "name": "mundo-senai_2025",
-        "description": "Project associated with Mundo Senai 2025. Public repository available for inspection."
-      },
-      {
-        "id": "dlj",
-        "name": "Desafio-DLJ-2025",
-        "description": "Educational gamification platform prototype for the Liga Jovem Challenge 2025."
+        "id": "zeroday",
+        "name": "ZeroDay Sentinel",
+        "status": "Academic prototype · private source",
+        "description": "Educational, conceptual prototype of a vulnerability response dashboard.",
+        "details": [
+          "Next.js 14, React 18 and TypeScript: alert dashboard, search and severity filters, incident timeline and containment simulation.",
+          "Academic demonstration with simulated threats; no real scanning, AI detection or automatic remediation."
+        ]
       }
     ],
     "detailsLabel": "Implementation and evidence"
