@@ -1,58 +1,66 @@
 # Ian Alves Sousa — Portfólio Pessoal
 
-Portfólio pessoal de Ian Alves Sousa — Desenvolvedor Full-Stack & IA.
+Aplicações web, integrações e automações com Python, TypeScript e IA aplicada.
 
-🌐 **Site ao vivo:** [portfolio-iansousa.vercel.app](https://portfolio-iansousa.vercel.app/)
+**URL canônica:** https://portfolio-iansousa.vercel.app/
 
-## 🚀 Tecnologias
+## Stack
 
-- **Framework:** Next.js 14 (App Router)
-- **Linguagem:** TypeScript
-- **Estilização:** Tailwind CSS
-- **Animações:** Framer Motion
-- **Ícones:** React Icons + Lucide React
-- **Deploy:** Vercel (CI/CD conectado a este repositório)
+Next.js 14 (App Router), React, TypeScript, Tailwind CSS, Framer Motion,
+React Icons e Lucide React.
 
-## 📋 Seções
+## Conteúdo PT/EN
 
-- **Hero** — Apresentação e links principais
-- **Sobre** — Resumo profissional, educação, conquistas e experiência internacional (Goiás pelo Mundo — Austrália)
-- **Projetos** — Projetos em destaque com links para GitHub e demos, incluindo o produto B2B WPP AI Bot (case study)
-- **Skills** — Habilidades técnicas com níveis e soft skills
-- **Experiência** — Timeline de experiências, formação, certificações e idiomas (Inglês C1)
-- **Contato** — Formulário de contato e informações diretas
+- Hero: apresentação, projetos e download do currículo.
+- Sobre: Quokk Software, formação Sesi-Senai, premiação e Austrália em 2026.
+- Projetos: seis destaques e outros repositórios, sem remoção dos projetos existentes.
+- Cases expansíveis: WPP AI Bot, análise exploratória de gastos da saúde
+  de dezembro de 2023 e BrasilSemLixo.
+- WPP AI Bot: produto B2B proprietário em desenvolvimento, implantação por
+  cliente, contexto por prompt e histórico limitado, OpenRouter e Chatwoot.
+  Link apenas para showcase público; código comercial não integra este site.
+- BrasilSemLixo: protótipo educativo em equipe, monitor com dados fictícios locais.
+- Skills: tecnologias sem notas, estrelas ou percentuais de domínio.
+- Experiência: trajetória, certificações e idiomas, incluindo inglês C1.
+- Contato: email, GitHub, localização e botão WhatsApp.
 
-## 🛠️ Como executar localmente
+Traduções em `lib/translations.ts`; links e metadados compartilhados em
+`lib/portfolio.ts`. Idioma pode ser alternado na navegação e é salvo localmente.
+
+## Contato e currículo
+
+**Entre em contato / Get in touch** abre https://wa.me/5562993432290 em nova
+aba. Não existe formulário, backend de envio ou confirmação simulada.
+Nenhuma mensagem é preenchida ou enviada automaticamente.
+
+**Baixar currículo (PDF) / Download résumé (PDF, Portuguese)** oferece
+`public/Ian_Alves_Sousa_Curriculo.pdf` pelo caminho
+`/Ian_Alves_Sousa_Curriculo.pdf`, com atributo `download`.
+PDF atual em português, disponibilizado sem alteração.
+
+## Execução local
+
+Com dependências já disponíveis:
 
 ```bash
-# Clonar o repositório
-git clone https://github.com/Sousaian/portfolio.git
-cd portfolio
-
-# Instalar dependências
-npm install
-
-# Executar em modo desenvolvimento
-npm run dev
-
-# Acessar http://localhost:3000
+npm run dev -- --hostname 127.0.0.1
+# http://127.0.0.1:3000
 ```
 
-## 📦 Build para produção
+## Verificação
 
 ```bash
+node --test tests/portfolio.test.cjs
+node node_modules/typescript/bin/tsc --noEmit
+git diff --check
 npm run build
 npm start
 ```
 
-## 🌐 Deploy
+Testes usam `node:test`, compilador TypeScript existente e renderização estática
+dos componentes. Validam contratos PT/EN, contato, PDF, projetos e certificados.
+Build usa fontes de `next/font/google` e pode exigir rede.
 
-Deploy automático na **Vercel** a cada push na branch `main`.
-
-## 📄 Licença
+## Licença
 
 Este projeto é pessoal e está sob a licença MIT.
-
----
-
-**Contato:** [iansousa.dev@gmail.com](mailto:iansousa.dev@gmail.com) | [GitHub](https://github.com/Sousaian)

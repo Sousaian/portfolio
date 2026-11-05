@@ -16,12 +16,7 @@ const timelineMeta: { icon: typeof Globe; highlight: boolean; url?: string }[] =
   { icon: GraduationCap, highlight: false },
 ];
 
-const certifications = [
-  { name: "Python", org: "Kaggle", hours: 5 },
-  { name: "ChatGPT for Devs", org: "OpenAI", hours: 18 },
-  { name: "Desafio Liga Jovem", org: "2025", hours: 30 },
-  { name: "Introdução à Inteligência Artificial", org: "CEIA/UFG", hours: 40 },
-];
+import { certifications, certificationDetail } from "@/lib/portfolio";
 
 export default function Experience() {
   const ref = useRef(null);
@@ -65,7 +60,7 @@ export default function Experience() {
                         meta.highlight ? "border-primary/50" : "border-border"
                       }`}>
                         <div className="flex items-center gap-2 mb-2">
-                          <Icon size={18} className={meta.highlight ? "text-primary" : "text-muted"} />
+                          <Icon size={18} className={meta.highlight ? "text-primary" : "text-muted"}  aria-hidden="true" />
                           <span className="text-xs text-muted font-mono">{item.period}</span>
                         </div>
                         <h3 className="font-semibold mb-1">
@@ -73,7 +68,7 @@ export default function Experience() {
                             <a href={meta.url} target="_blank" rel="noopener noreferrer"
                                className="inline-flex items-center gap-1.5 hover:text-primary transition-colors">
                               {item.title}
-                              <ExternalLink size={14} />
+                              <ExternalLink size={14}  aria-hidden="true" />
                             </a>
                           ) : (
                             item.title
@@ -105,7 +100,7 @@ export default function Experience() {
                   className="bg-card border border-border rounded-lg p-4"
                 >
                   <p className="font-medium text-sm">{cert.name}</p>
-                  <p className="text-xs text-muted mt-1">{cert.org} • {cert.hours}h</p>
+                  {certificationDetail(cert) && <p className="text-xs text-muted mt-1">{certificationDetail(cert)}</p>}
                 </motion.div>
               ))}
             </div>

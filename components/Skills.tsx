@@ -4,10 +4,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   SiPython, SiJavascript, SiTypescript, SiReact, SiNextdotjs,
-  SiHtml5, SiTailwindcss, SiGit, SiGithub, SiLinux,
-  SiPandas, SiNumpy, SiJupyter, SiSupabase, SiVercel
+  SiHtml5, SiTailwindcss, SiGit, SiLinux,
+  SiPandas, SiNumpy, SiJupyter
 } from "react-icons/si";
-import { FileSpreadsheet } from "lucide-react";
+import { Database, Server, Brain, Code, FileSpreadsheet } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const categorySkills = [
@@ -21,19 +21,22 @@ const categorySkills = [
     { icon: SiReact, name: "React" },
     { icon: SiNextdotjs, name: "Next.js" },
     { icon: SiTailwindcss, name: "Tailwind" },
-    { icon: SiGit, name: "Git/GitHub" },
+    { icon: Code, name: "FastAPI" },
+    { icon: Code, name: "APIs REST" },
   ],
   [
     { icon: SiPandas, name: "Pandas" },
     { icon: SiNumpy, name: "NumPy" },
     { icon: SiJupyter, name: "Jupyter" },
     { icon: FileSpreadsheet, name: "Excel" },
+    { icon: Brain, name: "LLMs" },
+    { icon: Database, name: "SQL / MySQL / PostgreSQL" },
+    { icon: Database, name: "SQLAlchemy" },
   ],
   [
     { icon: SiLinux, name: "Linux" },
-    { icon: SiSupabase, name: "Supabase" },
-    { icon: SiVercel, name: "Vercel" },
-    { icon: SiGithub, name: "GitHub Actions" },
+    { icon: Server, name: "Docker / Compose" },
+    { icon: SiGit, name: "Git / GitHub" },
   ],
 ];
 
@@ -71,10 +74,10 @@ export default function Skills() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
                     transition={{ delay: 0.3 + catIdx * 0.1 + skillIdx * 0.05 }}
-                    className="flex items-center gap-3 bg-secondary/50 border border-border rounded-lg px-4 py-3 hover:border-primary/50 hover:bg-secondary transition-all"
+                    className="flex min-w-0 items-center gap-3 bg-secondary/50 border border-border rounded-lg px-4 py-3 hover:border-primary/50 hover:bg-secondary transition-all"
                   >
                     <skill.icon size={20} className="text-primary shrink-0" />
-                    <span className="text-sm font-medium">{skill.name}</span>
+                    <span className="min-w-0 flex-1 break-words text-sm font-medium">{skill.name}</span>
                   </motion.div>
                 ))}
               </div>
