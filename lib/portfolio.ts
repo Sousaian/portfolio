@@ -3,8 +3,8 @@ export const contact = {
   resume: "/Ian_Alves_Sousa_Curriculo.pdf",
 };
 
-export const projectsMeta: Record<string, { tech: string[]; url?: string; demo?: string; b2b?: boolean; descriptionOnly?: boolean }> = {
-  wpp: { tech: ["Python", "FastAPI", "SQLAlchemy", "MySQL", "OpenRouter", "Evolution API", "Chatwoot", "Docker"], url: "https://github.com/Sousaian/wpp-ai-bot-showcase", b2b: true },
+export const projectsMeta: Record<string, { tech: string[]; url?: string; demo?: string; openSource?: boolean; descriptionOnly?: boolean }> = {
+  wpp: { tech: ["Python", "FastAPI", "SQLAlchemy", "MySQL", "OpenRouter", "Evolution API", "Chatwoot", "Docker"], url: "https://github.com/Sousaian/wpp-ai-bot-oss", openSource: true },
   telegram: { tech: ["TypeScript", "Node.js", "Telegraf", "Express"], url: "https://github.com/Sousaian/bot-telegram-promo-es" },
   data: { tech: ["Python", "Pandas", "NumPy", "Jupyter", "Matplotlib", "Seaborn", "SciPy"], url: "https://github.com/Sousaian/analise_qualidade_de_dados" },
   brasil: { tech: ["HTML", "CSS", "JavaScript", "GitHub Pages"], url: "https://github.com/Sousaian/BrasilSemLixo", demo: "https://sousaian.github.io/BrasilSemLixo/" },

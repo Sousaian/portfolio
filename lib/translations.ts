@@ -136,25 +136,25 @@ const pt = {
   "projects": {
     "title": "Projetos em Destaque",
     "subtitle": "Projetos que demonstram minhas habilidades em desenvolvimento web, automação e ciência de dados.",
-    "b2bBadge": "Produto B2B",
+    "openSourceBadge": "Open source",
     "othersTitle": "Outros Projetos",
     "viewAll": "Ver todos os repositórios no GitHub",
     "featured": [
       {
         "id": "wpp",
         "name": "WPP AI Bot",
-        "description": "Produto B2B proprietário em desenvolvimento para atendimento via WhatsApp, com implantação e configuração por cliente.",
-        "status": "Em desenvolvimento ativo",
-        "caseStudy": "Ver case público",
+        "description": "Plataforma open source (Apache-2.0) e self-hosted de atendimento por texto no WhatsApp com IA generativa, transferência para atendimento humano no Chatwoot e medição de consumo LLM por agente.",
+        "status": "Open source, em desenvolvimento ativo",
+        "caseStudy": "Ver detalhes do projeto",
         "highlights": [
-          "Instruções por prompt e histórico limitado da conversa",
           "Modelos configuráveis via OpenRouter",
-          "Transferência humana para o Chatwoot"
+          "Transferência humana para o Chatwoot",
+          "Medição de consumo LLM por agente"
         ],
         "details": [
-          "Problema: dúvidas recorrentes e continuidade entre atendimento automatizado e humano. Minha implementação conecta Evolution API, geração de respostas e handoff para o Chatwoot.",
-          "Decisões: FastAPI e SQLAlchemy com MySQL para dados da aplicação; OpenRouter por SDK compatível com OpenAI. PostgreSQL e Redis apoiam as integrações.",
-          "Projeto em desenvolvimento, com arquitetura documentada no repositório público. Implantação por cliente requer configuração e validação operacional."
+          "Problema: dúvidas recorrentes e continuidade entre atendimento automatizado e humano. A implementação conecta Evolution API, geração de respostas e handoff para o Chatwoot.",
+          "Decisões: FastAPI e SQLAlchemy com MySQL para dados da aplicação; OpenRouter por SDK compatível com OpenAI; execução self-hosted com Docker.",
+          "Código e arquitetura disponíveis no repositório público sob licença Apache-2.0. Implantação self-hosted exige configuração e validação operacional."
         ]
       },
       {
@@ -438,25 +438,25 @@ const en: Translation = {
   "projects": {
     "title": "Featured Projects",
     "subtitle": "Projects showcasing my skills in web development, automation and data science.",
-    "b2bBadge": "B2B Product",
+    "openSourceBadge": "Open source",
     "othersTitle": "Other Projects",
     "viewAll": "View all repositories on GitHub",
     "featured": [
       {
         "id": "wpp",
         "name": "WPP AI Bot",
-        "description": "Proprietary B2B product under development for WhatsApp support, deployed and configured per client.",
-        "status": "Under active development",
-        "caseStudy": "View public case study",
+        "description": "Open source (Apache-2.0), self-hosted platform for text-based WhatsApp support with generative AI, handoff to human agents in Chatwoot and per-agent LLM usage tracking.",
+        "status": "Open source, under active development",
+        "caseStudy": "View project details",
         "highlights": [
-          "Prompt instructions and limited conversation history",
           "Configurable models via OpenRouter",
-          "Human handoff to Chatwoot"
+          "Human handoff to Chatwoot",
+          "Per-agent LLM usage tracking"
         ],
         "details": [
-          "Problem: recurring questions and continuity between automated and human support. My implementation connects Evolution API, response generation and Chatwoot handoff.",
-          "Decisions: FastAPI and SQLAlchemy with MySQL for application data; OpenRouter through an OpenAI-compatible SDK. PostgreSQL and Redis support the integrations.",
-          "In-development project with architecture documented in the public repository. Client deployment requires configuration and operational validation."
+          "Problem: recurring questions and continuity between automated and human support. The implementation connects Evolution API, response generation and Chatwoot handoff.",
+          "Decisions: FastAPI and SQLAlchemy with MySQL for application data; OpenRouter through an OpenAI-compatible SDK; self-hosted deployment with Docker.",
+          "Code and architecture available in the public repository under the Apache-2.0 license. Self-hosted deployment requires configuration and operational validation."
         ]
       },
       {

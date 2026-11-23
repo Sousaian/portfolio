@@ -74,11 +74,18 @@ test("bilingual project IDs and metadata match; priority cases expose evidence",
     assert.match(wpp, /OpenRouter/);
     assert.match(wpp, /MySQL/);
     assert.match(wpp, /Chatwoot/);
+    assert.match(wpp, /Apache-2\.0/);
+    assert.doesNotMatch(wpp, /B2B|propriet|showcase/i);
+    assert.equal(translations[lang].projects.openSourceBadge, "Open source");
+    assert.equal("b2bBadge" in translations[lang].projects, false);
+    assert.ok(html.includes(">Open source</span>"));
     assert.match(JSON.stringify(projects.find(p => p.id === "brasil")), /fictícios|fictional/);
     assert.match(JSON.stringify(projects.find(p => p.id === "data")), /2023/);
   }
   assert.equal(projectsMeta.brasil.demo, "https://sousaian.github.io/BrasilSemLixo/");
-  assert.equal(projectsMeta.wpp.url, "https://github.com/Sousaian/wpp-ai-bot-showcase");
+  assert.equal(projectsMeta.wpp.url, "https://github.com/Sousaian/wpp-ai-bot-oss");
+  assert.equal(projectsMeta.wpp.openSource, true);
+  assert.ok(Object.values(projectsMeta).every(m => !("b2b" in m)));
 });
 
 test("certifications: optional issuer/hours, no fabricated issuer", () => {
@@ -139,7 +146,7 @@ test("public cases retain scope without portfolio-review process disclaimers", (
 
 test("selected projects: repository links, scope and four unique other projects", () => {
   const urls = {
-    wpp: "wpp-ai-bot-showcase",
+    wpp: "wpp-ai-bot-oss",
     telegram: "bot-telegram-promo-es",
     data: "analise_qualidade_de_dados",
     brasil: "BrasilSemLixo",
