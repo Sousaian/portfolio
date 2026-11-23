@@ -24,9 +24,9 @@ React Icons e Lucide React.
 - Telegram: agendamento, curadoria por LLM ou heurística, deduplicação, API
   HTTP e simulação. Fontes scraping/API têm limitações de acesso e coleta;
   histórico local não garante eliminar duplicidades entre origens.
-- WPP AI Bot: produto B2B proprietário em desenvolvimento, implantação por
-  cliente, contexto por prompt e histórico limitado, OpenRouter e Chatwoot.
-  Link apenas para showcase público; código comercial não integra este site.
+- WPP AI Bot: plataforma open source (Apache-2.0) e self-hosted de atendimento
+  no WhatsApp com IA generativa, OpenRouter, MySQL, handoff para Chatwoot e
+  consumo LLM por agente. Link para o repositório público wpp-ai-bot-oss.
 - BrasilSemLixo: protótipo educativo em equipe, monitor com dados fictícios locais.
 - Skills: tecnologias sem notas, estrelas ou percentuais de domínio.
 - Experiência: trajetória, certificações e idiomas, incluindo inglês C1.

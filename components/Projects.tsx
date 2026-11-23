@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Lock, Check, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, Check, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 import { projectsMeta, otherProjects } from "@/lib/portfolio";
@@ -34,7 +34,7 @@ export default function Projects() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className={`bg-card border rounded-xl p-6 transition-all hover:translate-y-[-4px] group ${
-                  meta.b2b ? "border-primary/60" : "border-border hover:border-primary/50"
+                  meta.openSource ? "border-primary/60" : "border-border hover:border-primary/50"
                 }`}
               >
                 {meta.descriptionOnly ? (
@@ -49,9 +49,9 @@ export default function Projects() {
                     <div className="flex items-start justify-between mb-4">
                       <Github size={24} className="text-muted group-hover:text-primary transition-colors"  aria-hidden="true" />
                       <div className="flex items-center gap-3">
-                        {meta.b2b && (
+                        {meta.openSource && (
                           <span className="flex items-center gap-1 text-xs bg-primary/20 text-primary px-2 py-1 rounded font-medium">
-                            <Lock size={12}  aria-hidden="true" /> {t.projects.b2bBadge}
+                            {t.projects.openSourceBadge}
                           </span>
                         )}
                         {meta.url && (
@@ -78,7 +78,7 @@ export default function Projects() {
                         {project.status}
                       </span>
                     )}
-                    <p className={`text-sm text-muted mb-4 ${meta.b2b ? "" : "line-clamp-3"}`}>{project.description}</p>
+                    <p className={`text-sm text-muted mb-4 ${meta.openSource ? "" : "line-clamp-3"}`}>{project.description}</p>
 
                     {project.highlights && (
                       <ul className="space-y-1.5 mb-4">
